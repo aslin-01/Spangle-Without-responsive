@@ -126,14 +126,14 @@ export default function Team() {
       </h2>
 
       {/* Cards */}
-      <div className="grid md:grid-cols-3 gap-[50px] max-[768px]:gap-[30px] max-[413px]:gap-[25px]">
+      <div className="grid grid-cols-3 max-[1201px]:grid-cols-2 max-[768px]:grid-cols-1 gap-[50px] max-[1024px]:gap-[40px] max-[768px]:gap-[30px] max-[413px]:gap-[25px]">
         {team.map((member, index) => (
           <div
             key={index}
             className="bg-white rounded-[18px] p-[10px] text-center shadow-[0_10px_30px_rgba(0,0,0,0.06)]"
           >
             {/* Image */}
-            <div className="w-[350px] h-[350px] max-[413px]:w-[330px] max-[413px]:h-[330px] mx-auto mb-5 overflow-hidden rounded-[14px]">
+            <div className="w-full h-[350px] max-[1201px]:h-[300px] max-[768px]:h-[400px] max-[413px]:h-[250px] mx-auto mb-5 overflow-hidden rounded-[14px]">
               <img
                 src={member.img}
                 alt={member.name}

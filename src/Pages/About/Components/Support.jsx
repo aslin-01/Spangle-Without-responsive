@@ -10,10 +10,10 @@ import logo from "../../../assets/logo.png";
 export default function SupportBar() {
   return (
     <div className="px-[75px] mb-1 bg-[#ffffff] max-[1024px]:px-6 max-[768px]:px-4 max-[413px]:px-0 max-[413px]:flex max-[413px]:justify-center">
-     <div className="bg-white rounded-[14px] shadow-[0px_0px_20px_2px_#00000012] px-[75px] pt-[37px] pb-[45px] flex items-start justify-between max-[1024px]:px-6 max-[768px]:px-4 max-[413px]:px-[28px] max-[413px]:flex-col max-[413px]:gap-[20px] max-[413px]:max-w-[360px] max-[413px]:w-full">
+      <div className="bg-white rounded-[14px] shadow-[0px_0px_20px_2px_#00000012] px-[75px] pt-[37px] pb-[45px] flex items-start justify-between max-[1200px]:flex-wrap max-[1024px]:justify-center max-[1200px]:gap-x-12 max-[1200px]:gap-y-10 max-[1024px]:px-6 max-[768px]:px-4 max-[413px]:px-[28px] max-[413px]:flex-col max-[413px]:gap-[25px] max-[413px]:max-w-[360px] max-[413px]:w-full">
         {/* Logo */}
 
-        <div className="flex items-center max-[413px]:self-center">
+        <div className="flex items-center max-[1200px]:w-full max-[1200px]:justify-center max-[413px]:self-center">
           <img
             src={logo}
             alt="Spanglez Webx"
@@ -21,11 +21,11 @@ export default function SupportBar() {
           />
         </div>
 
-        {/* Divider */}
-        {/* <div className="h-[60px] w-[1px] bg-gray-200"></div> */}
+        {/* Divider (Desktop only) */}
+        {/* <div className="h-[100px] w-[1px] bg-gray-200 max-[767px]:hidden max-[1200px]:hidden"></div> */}
 
         {/* Call for support */}
-        <div className="text-start">
+        <div className="text-start max-[1200px]:text-center max-[413px]:w-full">
           <p className="font-bold text-[14px] mb-4 leading-[15.6px] tracking-[0] align-middle uppercase text-[#34515F]">
             CALL FOR SUPPORT
           </p>
@@ -45,10 +45,10 @@ export default function SupportBar() {
         </div>
 
         {/* Divider */}
-        <div className="h-[100px] w-[1px] bg-gray-200 max-[413px]:h-[1px] max-[413px]:w-full"></div>
+        <div className="h-[100px] w-[1px] bg-gray-200 max-[1200px]:hidden max-[767px]:hidden max-[413px]:hidden max-[413px]:h-[1px] max-[413px]:w-full"></div>
 
         {/* Address */}
-        <div>
+        <div className="max-[1200px]:text-center max-[413px]:w-full">
           <p className="font-bold text-[14px] mb-4 leading-[15.6px] tracking-[0] align-middle uppercase text-[#34515F]">
             ADDRESS
           </p>
@@ -60,15 +60,15 @@ export default function SupportBar() {
         </div>
 
         {/* Divider (mobile) */}
-        <div className="hidden max-[413px]:block h-[1px] w-full bg-gray-200" />
+        <div className="hidden max-[413px]:hidden h-[1px] w-full bg-gray-200" />
 
         {/* Follow */}
-        <div>
+        <div className="max-[1200px]:text-center max-[413px]:w-full">
           <p className="mb-4 font-bold text-[14px] leading-[15.6px] tracking-[0] align-middle uppercase text-[#34515F]">
             FOLLOW US
           </p>
 
-          <div className="flex max-[413px]:gap-[12px] max-[413px]:justify-center">
+          <div className="flex max-[1200px]:justify-center max-[413px]:gap-[12px]">
             <div className="p-[10px] rounded-[10px] cursor-pointer max-[413px]:p-[9px]">
               <FaFacebookF
                 className="text-[#345261] text-[18px] hover:text-[#345261] transition max-[413px]:text-[14px]"

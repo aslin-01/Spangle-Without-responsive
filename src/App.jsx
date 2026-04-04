@@ -10,7 +10,7 @@ import Contact from "./Pages/Contact";
 
 function App() {
   return (
-    <div >
+    <div className="overflow-x-hidden w-full max-w-[100vw]">
       <Navbar />
       <main>
         <Routes>

@@ -7,4 +7,9 @@
 body {
   @apply font-mont;
   margin: 0;
+  overflow-x: hidden;
+  max-width: 100%;
+}
+html {
+  overflow-x: hidden;
 }
