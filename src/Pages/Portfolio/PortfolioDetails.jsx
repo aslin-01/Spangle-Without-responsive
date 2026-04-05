@@ -1,6 +1,5 @@
 import { useLocation } from "react-router-dom";
-import { useState } from "react";
-import { useEffect } from "react";
+import { useState, useEffect, useRef, useLayoutEffect } from "react";
 import Support from "../About/Components/Support";
 import img1 from "../../assets/portfolio1.jpg";
 import img2 from "../../assets/portfolio2.jpg";
@@ -49,7 +48,8 @@ const allProjects = [
     title: "Waltur Website",
     image: img2,
     desc: "Modern business website with performance optimization.",
-    fullDesc: "Spangles Webx is a tech-driven company passionate about delivering innovative digital products. With a focus on design, usability, and performance, we help startups and enterprises scale with impactful web and mobile solutions. we help startups and ",
+    fullDesc:
+      "Spangles Webx is a tech-driven company passionate about delivering innovative digital products. With a focus on design, usability, and performance, we help startups and enterprises scale with impactful web and mobile solutions. we help startups and ",
     functionalities: [
       {
         title: "Lightweight architecture",
@@ -79,7 +79,8 @@ const allProjects = [
     title: "AI Project",
     image: img3,
     desc: "AI-powered insights for smarter decision making.",
-    fullDesc: "Spangles Webx is a tech-driven company passionate about delivering innovative digital products. With a focus on design, usability, and performance, we help startups and enterprises scale with impactful web and mobile solutions. we help startups and ",
+    fullDesc:
+      "Spangles Webx is a tech-driven company passionate about delivering innovative digital products. With a focus on design, usability, and performance, we help startups and enterprises scale with impactful web and mobile solutions. we help startups and ",
     functionalities: [
       {
         title: "Real-time processing",
@@ -109,7 +110,8 @@ const allProjects = [
     title: "Hyper Design",
     image: img4,
     desc: "Minimal UI with futuristic interaction design.",
-    fullDesc: "Spangles Webx is a tech-driven company passionate about delivering innovative digital products. With a focus on design, usability, and performance, we help startups and enterprises scale with impactful web and mobile solutions. we help startups and ",
+    fullDesc:
+      "Spangles Webx is a tech-driven company passionate about delivering innovative digital products. With a focus on design, usability, and performance, we help startups and enterprises scale with impactful web and mobile solutions. we help startups and ",
     functionalities: [
       {
         title: "Micro-interactions",
@@ -201,7 +203,8 @@ const allProjects = [
     title: "Creative Studio",
     image: img7,
     desc: "Creative branding and digital experience design.",
-    fullDesc: "Spangles Webx is a tech-driven company passionate about delivering innovative digital products. With a focus on design, usability, and performance, we help startups and enterprises scale with impactful web and mobile solutions. we help startups and ",
+    fullDesc:
+      "Spangles Webx is a tech-driven company passionate about delivering innovative digital products. With a focus on design, usability, and performance, we help startups and enterprises scale with impactful web and mobile solutions. we help startups and ",
     functionalities: [
       {
         title: "Project categories",
@@ -231,7 +234,8 @@ const allProjects = [
     title: "Mobile UI Kit",
     image: img8,
     desc: "Modern mobile UI components and interactions.",
-    fullDesc: "Spangles Webx is a tech-driven company passionate about delivering innovative digital products. With a focus on design, usability, and performance, we help startups and enterprises scale with impactful web and mobile solutions. we help startups and ",
+    fullDesc:
+      "Spangles Webx is a tech-driven company passionate about delivering innovative digital products. With a focus on design, usability, and performance, we help startups and enterprises scale with impactful web and mobile solutions. we help startups and ",
     functionalities: [
       {
         title: "UI components",
@@ -297,10 +301,42 @@ const PortfolioDetails = () => {
     return () => clearInterval(interval);
   }, []);
 
+  const [slideStep, setSlideStep] = useState(460 + 30);
+  const sliderViewportRef = useRef(null);
+
+  useLayoutEffect(() => {
+    const mq = window.matchMedia("(max-width: 413px)");
+
+    const updateSlideStep = () => {
+      if (mq.matches && sliderViewportRef.current) {
+        setSlideStep(sliderViewportRef.current.clientWidth);
+      } else {
+        setSlideStep(460 + 30);
+      }
+    };
+
+    updateSlideStep();
+    mq.addEventListener("change", updateSlideStep);
+    window.addEventListener("resize", updateSlideStep);
+
+    const el = sliderViewportRef.current;
+    const ro =
+      typeof ResizeObserver !== "undefined" && el
+        ? new ResizeObserver(() => updateSlideStep())
+        : null;
+    if (el && ro) ro.observe(el);
+
+    return () => {
+      mq.removeEventListener("change", updateSlideStep);
+      window.removeEventListener("resize", updateSlideStep);
+      ro?.disconnect();
+    };
+  }, []);
+
   return (
-    <div className="font-sans text-gray-700">
+    <div className="font-sans text-gray-700 max-xl:overflow-x-hidden max-[413px]:overflow-x-hidden">
       {/* HERO SECTION */}
-      <div className="relative h-[360px] w-full">
+      <div className="relative h-[360px] w-full max-xl:h-[340px] max-lg:h-[330px] max-md:h-[310px] max-[413px]:h-[300px]">
         <img
           src={currentProject.image}
           alt={currentProject.title}
@@ -311,12 +347,12 @@ const PortfolioDetails = () => {
         <div className="absolute inset-0 bg-black/40"></div>
 
         {/* text */}
-        <div className="absolute inset-0 flex flex-col justify-end px-[100px] pb-[100px] text-white">
-          <p className="font-montserrat font-bold text-[14px] leading-[21px] tracking-[2.24px] uppercase text-white">
+        <div className="absolute inset-0 flex flex-col justify-end px-[100px] pb-[100px] text-white max-xl:px-16 max-xl:pb-20 max-lg:px-12 max-lg:pb-16 max-md:px-8 max-md:pb-14 max-sm:px-6 max-sm:pb-12 max-[413px]:px-5 max-[413px]:pb-10">
+          <p className="font-montserrat font-bold text-[14px] leading-[21px] tracking-[2.24px] uppercase text-white max-lg:text-[13px] max-lg:leading-5 max-md:text-[13px] max-sm:text-[12px] max-sm:leading-[18px] max-sm:tracking-[1.8px] max-[413px]:text-[12px] max-[413px]:leading-[18px] max-[413px]:tracking-[1.6px]">
             Home / Portfolio
           </p>
 
-          <h1 className="font-montserrat font-semibold text-[54px] leading-[62px] text-white mt-2">
+          <h1 className="font-montserrat font-semibold text-[54px] leading-[62px] text-white mt-2 max-xl:text-[48px] max-xl:leading-[56px] max-lg:text-[44px] max-lg:leading-[52px] max-md:text-[38px] max-md:leading-[46px] max-sm:text-[34px] max-sm:leading-[40px] max-[413px]:text-[22px] max-[413px]:leading-[28px]">
             {currentProject.title}
           </h1>
         </div>
@@ -324,18 +360,21 @@ const PortfolioDetails = () => {
 
       {/* SLIDER SECTION */}
       {/* SLIDER SECTION */}
-      <div className="pl-[100px] pb-[60px]">
-        <div className="overflow-hidden w-full pt-[60px]">
+      <div className="pl-[100px] pb-[60px] max-xl:pl-16 max-xl:pr-8 max-xl:pb-14 max-lg:pl-12 max-lg:pr-6 max-lg:pb-12 max-md:pl-8 max-md:pr-5 max-md:pb-11 max-sm:pl-6 max-sm:pr-4 max-sm:pb-10 max-[413px]:pl-4 max-[413px]:pr-4 max-[413px]:pb-10">
+        <div
+          ref={sliderViewportRef}
+          className="overflow-hidden w-full pt-[60px] max-lg:pt-12 max-md:pt-10 max-sm:pt-8 max-[413px]:pt-6"
+        >
           <div
             className={`flex ${index === 0 ? "" : "transition-transform duration-700 ease-in-out"}`}
             style={{
-              transform: `translateX(calc(-${index * (460 + 30)}px))`, // 460 width + 30px gap
+              transform: `translateX(calc(-${index * slideStep}px))`, // 460 width + 30px gap
             }}
           >
             {sliderItems.map((item, i) => (
               <div
                 key={i}
-                className="flex-shrink-0 cursor-pointer group"
+                className="flex-shrink-0 cursor-pointer group max-[413px]:!mr-0 max-[413px]:!h-[230px] max-[413px]:!w-full max-[413px]:!min-w-0 max-[413px]:!shrink-0 max-[413px]:!grow-0 max-[413px]:!basis-full"
                 style={{ width: "460px", height: "380px", marginRight: "30px" }}
                 onClick={() => handleProjectClick(item)}
               >
@@ -346,8 +385,8 @@ const PortfolioDetails = () => {
                     className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
                     style={{ borderRadius: 0 }} // removes border radius
                   />
-                  <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                    <p className="text-white font-semibold text-lg">
+                  <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center max-[413px]:opacity-100 max-[413px]:bg-black/10">
+                    <p className="text-white font-semibold text-lg max-lg:text-base max-md:text-sm max-md:px-3 max-[413px]:text-sm max-[413px]:px-2 max-[413px]:text-center">
                       {item.title}
                     </p>
                   </div>
@@ -359,23 +398,26 @@ const PortfolioDetails = () => {
       </div>
 
       {/* CONTENT SECTION */}
-      <div className="flex gap-[120px] px-[100px] pb-[120px] border-b border-[#E5E5E5]">
+      <div className="flex gap-[120px] px-[100px] pb-[120px] border-b border-[#E5E5E5] max-xl:gap-24 max-xl:px-16 max-xl:pb-24 max-lg:gap-20 max-lg:px-12 max-lg:pb-20 max-md:flex-col max-md:gap-12 max-md:px-8 max-md:pb-16 max-sm:gap-11 max-sm:px-6 max-sm:pb-19 max-[413px]:flex-col max-[413px]:gap-10 max-[413px]:px-5 max-[413px]:pb-12">
         {/* LEFT SIDE */}
-        <div className="flex-[2]">
-          <h3 className="mb-5 font-montserrat font-semibold text-[38px] leading-[52px] tracking-[0%] text-[#345261] align-middle">
+        <div className="flex-[2] max-md:w-full max-md:min-w-0 max-[413px]:w-full max-[413px]:min-w-0">
+          <h3 className="mb-5 font-montserrat font-semibold text-[38px] leading-[52px] tracking-[0%] text-[#345261] align-middle max-xl:mb-4 max-xl:text-[34px] max-xl:leading-[46px] max-lg:text-[32px] max-lg:leading-[44px] max-md:text-[30px] max-md:leading-[40px] max-sm:text-[28px] max-sm:leading-[36px] max-[413px]:mb-4 max-[413px]:text-[22px] max-[413px]:leading-[28px]">
             Description
           </h3>
 
-          <p className="font-montserrat font-normal text-[18px] leading-[28px] tracking-[0%] text-[#6B6A66] text-justify align-middle pb-6">
+          <p className="font-montserrat font-normal text-[18px] leading-[28px] tracking-[0%] text-[#6B6A66] text-justify align-middle pb-6 max-lg:text-[17px] max-lg:leading-[27px] max-md:text-left max-md:text-[16px] max-md:leading-[26px] max-md:pb-5 max-sm:text-[15px] max-sm:leading-[25px] max-[413px]:text-left max-[413px]:text-[16px] max-[413px]:leading-[26px] max-[413px]:pb-5">
             {currentProject.fullDesc}
           </p>
-          <h4 className="mb-5 font-montserrat font-semibold text-[38px] leading-[52px] tracking-[0%] text-[#345261] align-middle">
+          <h4 className="mb-5 font-montserrat font-semibold text-[38px] leading-[52px] tracking-[0%] text-[#345261] align-middle max-xl:mb-4 max-xl:text-[34px] max-xl:leading-[46px] max-lg:text-[32px] max-lg:leading-[44px] max-md:text-[30px] max-md:leading-[40px] max-sm:text-[28px] max-sm:leading-[36px] max-[413px]:mb-4 max-[413px]:text-[22px] max-[413px]:leading-[28px]">
             The key functionalities include:
           </h4>
 
-          <ul className="mt-4 space-y-3 pl-5 list-disc">
+          <ul className="mt-4 space-y-3 pl-5 list-disc max-lg:space-y-2.5 max-md:mt-3 max-md:pl-4 max-sm:space-y-2.5 max-[413px]:mt-3 max-[413px]:space-y-2.5 max-[413px]:pl-4">
             {currentProject.functionalities.map((func, idx) => (
-              <li key={idx} className="leading-[28px] text-[18px] align-middle">
+              <li
+                key={idx}
+                className="leading-[28px] text-[18px] align-middle max-lg:text-[17px] max-lg:leading-[27px] max-md:text-[16px] max-md:leading-[26px] max-sm:text-[15px] max-sm:leading-[25px] max-[413px]:text-[15px] max-[413px]:leading-[24px]"
+              >
                 {/* Title (SemiBold) */}
                 <span className="font-semibold text-[#161C2D]">
                   {func.title}:
@@ -390,17 +432,20 @@ const PortfolioDetails = () => {
         </div>
 
         {/* RIGHT SIDE FORM */}
-        <div className="flex-1">
-          <h4 className="mb-9 font-montserrat font-semibold text-[24px] leading-[32px] tracking-[0%] text-[#345261] align-middle">
+        <div className="flex-1 max-md:w-full max-md:min-w-0 max-[413px]:w-full max-[413px]:min-w-0">
+          <h4 className="mb-9 font-montserrat font-semibold text-[24px] leading-[32px] tracking-[0%] text-[#345261] align-middle max-lg:mb-8 max-md:mb-7 max-sm:mb-6 max-[413px]:mb-6 max-[413px]:text-[22px] max-[413px]:leading-[28px]">
             Get A Quote
           </h4>
-          <div className="flex-1 p-[30px] rounded-md bg-white shadow h-fit">
-            <form className="space-y-3" onSubmit={(e) => e.preventDefault()}>
-              <div className="flex gap-[30px] mb-4">
-                <div className="flex flex-col">
+          <div className="flex-1 p-[30px] rounded-md bg-white shadow h-fit max-xl:p-7 max-lg:p-6 max-md:p-5 max-sm:p-5 max-[413px]:p-5">
+            <form
+              className="space-y-3 max-xl:space-y-3.5 max-lg:space-y-3 max-md:space-y-3.5 max-sm:space-y-4 max-[413px]:space-y-4"
+              onSubmit={(e) => e.preventDefault()}
+            >
+              <div className="flex gap-[30px] mb-4 max-xl:gap-6 max-lg:gap-5 max-md:gap-4 max-sm:gap-3 max-sm:mb-3 max-[413px]:flex-col max-[413px]:gap-4 max-[413px]:mb-0">
+                <div className="flex flex-col max-md:min-w-0 max-md:flex-1 max-[413px]:w-full">
                   <label
                     htmlFor="name"
-                    className="mb-1 font-montserrat font-medium text-[14px] uppercase leading-[14px] text-[#182F27]"
+                    className="mb-1 font-montserrat font-medium text-[14px] uppercase leading-[14px] text-[#182F27] max-md:text-[13px] max-md:leading-[13px] max-sm:mb-1.5"
                   >
                     Name
                   </label>
@@ -408,13 +453,13 @@ const PortfolioDetails = () => {
                     id="name"
                     type="text"
                     placeholder="Enter name here"
-                    className="w-[156px] border border-gray-300 px-4.5 py-4 text-[12px] font-montserrat font-medium placeholder-[#34526166] leading-[12px] rounded-[10px]"
+                    className="w-[156px] border border-gray-300 px-4.5 py-4 text-[12px] font-montserrat font-medium placeholder-[#34526166] leading-[12px] rounded-[10px] max-lg:w-[148px] max-lg:py-3.5 max-md:w-full max-md:min-w-0 max-md:py-3.5 max-sm:px-3 max-sm:text-[11px] max-[413px]:w-full"
                   />
                 </div>
-                <div className="flex flex-col">
+                <div className="flex flex-col max-md:min-w-0 max-md:flex-1 max-[413px]:w-full">
                   <label
                     htmlFor="email"
-                    className="mb-2 font-montserrat font-medium text-[14px] uppercase leading-[14px] text-[#182F27]"
+                    className="mb-2 font-montserrat font-medium text-[14px] uppercase leading-[14px] text-[#182F27] max-md:text-[13px] max-md:leading-[13px] max-md:mb-1.5 max-sm:mb-1.5"
                   >
                     Email
                   </label>
@@ -422,16 +467,16 @@ const PortfolioDetails = () => {
                     id="email"
                     type="email"
                     placeholder="Your email address"
-                    className="w-[156px] border border-gray-300 px-4.5 py-4 text-[12px] font-montserrat font-medium placeholder-[#34526166] leading-[12px] rounded-[10px]"
+                    className="w-[156px] border border-gray-300 px-4.5 py-4 text-[12px] font-montserrat font-medium placeholder-[#34526166] leading-[12px] rounded-[10px] max-lg:w-[148px] max-lg:py-3.5 max-md:w-full max-md:min-w-0 max-md:py-3.5 max-sm:px-3 max-sm:text-[11px] max-[413px]:w-full"
                   />
                 </div>
               </div>
 
-              <div className="flex gap-[30px] mb-4">
-                <div className="flex flex-col">
+              <div className="flex gap-[30px] mb-4 max-xl:gap-6 max-lg:gap-5 max-md:gap-4 max-sm:gap-3 max-sm:mb-3 max-[413px]:flex-col max-[413px]:gap-4 max-[413px]:mb-0">
+                <div className="flex flex-col max-md:min-w-0 max-md:flex-1 max-[413px]:w-full">
                   <label
                     htmlFor="phone"
-                    className="mb-2 font-montserrat font-medium text-[14px] uppercase leading-[14px] text-[#182F27]"
+                    className="mb-2 font-montserrat font-medium text-[14px] uppercase leading-[14px] text-[#182F27] max-md:text-[13px] max-md:leading-[13px] max-md:mb-1.5 max-sm:mb-1.5"
                   >
                     Phone
                   </label>
@@ -439,13 +484,13 @@ const PortfolioDetails = () => {
                     id="phone"
                     type="text"
                     placeholder="Your phone number"
-                    className="w-[156px] border border-gray-300 px-4.5 py-4 text-[12px] font-montserrat font-medium placeholder-[#34526166] leading-[12px] rounded-[10px]"
+                    className="w-[156px] border border-gray-300 px-4.5 py-4 text-[12px] font-montserrat font-medium placeholder-[#34526166] leading-[12px] rounded-[10px] max-lg:w-[148px] max-lg:py-3.5 max-md:w-full max-md:min-w-0 max-md:py-3.5 max-sm:px-3 max-sm:text-[11px] max-[413px]:w-full"
                   />
                 </div>
-                <div className="flex flex-col">
+                <div className="flex flex-col max-md:min-w-0 max-md:flex-1 max-[413px]:w-full">
                   <label
                     htmlFor="company"
-                    className="mb-2 font-montserrat font-medium text-[14px] uppercase leading-[14px] text-[#182F27]"
+                    className="mb-2 font-montserrat font-medium text-[14px] uppercase leading-[14px] text-[#182F27] max-md:text-[13px] max-md:leading-[13px] max-md:mb-1.5 max-sm:mb-1.5"
                   >
                     Company
                   </label>
@@ -453,28 +498,28 @@ const PortfolioDetails = () => {
                     id="company"
                     type="text"
                     placeholder="Your company name"
-                    className="w-[156px] border border-gray-300 px-4.5 py-4 text-[12px] font-montserrat font-medium placeholder-[#34526166] leading-[12px] rounded-[10px]"
+                    className="w-[156px] border border-gray-300 px-4.5 py-4 text-[12px] font-montserrat font-medium placeholder-[#34526166] leading-[12px] rounded-[10px] max-lg:w-[148px] max-lg:py-3.5 max-md:w-full max-md:min-w-0 max-md:py-3.5 max-sm:px-3 max-sm:text-[11px] max-[413px]:w-full"
                   />
                 </div>
               </div>
 
-              <div className="flex flex-col">
+              <div className="flex flex-col max-md:w-full max-[413px]:w-full">
                 <label
                   htmlFor="message"
-                  className="mb-5 font-montserrat font-medium text-[14px] uppercase leading-[14px] text-[#182F27]"
+                  className="mb-5 font-montserrat font-medium text-[14px] uppercase leading-[14px] text-[#182F27] max-lg:mb-4 max-md:mb-3 max-md:text-[13px] max-md:leading-[13px] max-sm:mb-4"
                 >
                   Message
                 </label>
                 <textarea
                   id="message"
                   placeholder="Your message goes here..."
-                  className="w-full border mb-5 border-gray-300 px-3 py-4 text-[12px] font-montserrat font-medium placeholder-[#34526166] leading-[12px] rounded-[10px] h-[80px]"
+                  className="w-full border mb-5 border-gray-300 px-3 py-4 text-[12px] font-montserrat font-medium placeholder-[#34526166] leading-[12px] rounded-[10px] h-[80px] max-lg:mb-4 max-lg:py-3.5 max-md:mb-4 max-sm:min-h-[88px] max-[413px]:min-h-[100px]"
                 ></textarea>
               </div>
 
               <button
                 type="submit"
-                className=" px-[26px] py-[15px] bg-[#345261] text-white text-[18px] leading-[100%] tracking-[0%] text-center align-middle font-bold font-[Montserrat] rounded-[10px] hover:bg-[#1f2a30]"
+                className=" px-[26px] py-[15px] bg-[#345261] text-white text-[18px] leading-[100%] tracking-[0%] text-center align-middle font-bold font-[Montserrat] rounded-[10px] hover:bg-[#1f2a30] max-lg:px-6 max-lg:py-3.5 max-lg:text-[17px] max-md:w-full max-md:py-3.5 max-md:text-[16px] max-sm:px-5 max-[413px]:block max-[413px]:w-full"
               >
                 Submit
               </button>
@@ -483,7 +528,7 @@ const PortfolioDetails = () => {
         </div>
       </div>
       {/* Support Section */}
-      <div className="-mt-[40px] relative z-10">
+      <div className="-mt-[40px] relative z-10 max-xl:-mt-9 max-lg:-mt-8 max-md:-mt-7 max-sm:-mt-6 max-[413px]:-mt-6">
         <Support />
       </div>
     </div>

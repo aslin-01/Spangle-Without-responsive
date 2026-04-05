@@ -141,7 +141,7 @@ className="w-[36px] h-[36px] object-contain
               an enquiry. Our customer service team will get in touch.
             </p>
 
-            <div className="grid grid-cols-2 gap-x-[30px] gap-y-[44px] max-[768px]:gap-y-6 max-[413px]:grid-cols-1 max-[413px]:gap-y-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-[30px] gap-y-[44px] max-[768px]:gap-y-6 max-[480px]:gap-y-4">
               <div>
                 <input
                   type="text"
@@ -190,10 +190,10 @@ className="w-[36px] h-[36px] object-contain
               </div>
             </div>
 
-            <div className="mb-9 max-[413px]:mb-6">
+            <div className="mb-9 max-[480px]:mb-6">
               <textarea
                 placeholder="Message *"
-                className={`${inputStyle} h-[120px] pt-4 mt-[44px] max-[768px]:mt-6 max-[413px]:mt-4 ${
+                className={`${inputStyle} h-[120px] pt-4 mt-[44px] max-[768px]:mt-6 max-[480px]:mt-4 ${
                   errors.message ? "border-red-500" : ""
                 }`}
                 onChange={(e) => setForm({ ...form, message: e.target.value })}
@@ -202,25 +202,26 @@ className="w-[36px] h-[36px] object-contain
                 <p className="text-red-500 text-sm mt-1">{errors.message}</p>
               )}
             </div>
-
-            <button
-              onClick={validate}
-              className="group bg-[#395563] border border-[#5E6FB5]
+<button
+  onClick={validate}
+  className="group bg-[#395563] border border-[#5E6FB5]
   px-[35px] py-[20px] rounded-[10px]
   text-white uppercase
   font-montserrat font-bold text-[12px] leading-[18px]
-  flex items-center justify-center gap-2 max-[413px]:w-full max-[413px]:py-4"
-            >
-              SEND MESSAGE
-              <ArrowRight
-                size={14}
-                className="transition-transform duration-300 group-hover:translate-x-1"
-              />
-            </button>
+  flex items-center justify-center gap-2
+  max-[480px]:w-full max-[480px]:py-4
+  mb-0 max-[413px]:mb-[35px]"
+>
+  SEND MESSAGE
+  <ArrowRight
+    size={14}
+    className="transition-transform duration-300 group-hover:translate-x-1"
+  />
+</button>
           </div>
 
           {/* Right Section - Map */}
-          <div className="w-full h-full max-[768px]:h-[350px] max-[413px]:h-[250px]">
+          <div className="hidden md:block w-full h-full">
             <iframe
               title="map"
               src="https://maps.google.com/maps?q=London&t=&z=10&ie=UTF8&iwloc=&output=embed"

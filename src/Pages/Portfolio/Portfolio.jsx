@@ -78,7 +78,7 @@ const portfolio = [
   return (
     <div>
       {/* ✅ NEW BANNER SECTION (like your image) */}
-      <div className="relative h-[360px] w-full">
+      <div className="relative h-[360px] w-full max-[413px]:h-[300px]">
         <img
           src={bannerImg}
           alt="banner"
@@ -89,58 +89,62 @@ const portfolio = [
         <div className="absolute inset-0 bg-black/40"></div>
 
         {/* text */}
-        <div className="absolute inset-0 flex flex-col justify-end px-[100px] pb-25 text-white">
-          <p className="font-[Montserrat] font-bold text-[14px] leading-[21px] tracking-[2.24px] uppercase text-white">
+        <div className="absolute inset-0 flex flex-col justify-end px-[100px] pb-25 text-white 
+        max-[1024px]:px-10 max-[1024px]:pb-20 max-[768px]:px-6 max-[768px]:pb-16 max-[413px]:px-4 max-[413px]:pb-10 min-[1024px]:max-[1200px]:px-[72px]">
+          <p className="font-[Montserrat] font-bold text-[14px] leading-[21px] tracking-[2.24px] uppercase text-white max-[413px]:text-[12px]">
             Home / Portfolio
           </p>
-          <h1 className="font-montserrat font-semibold text-[54px] leading-[62px] text-white mt-2">
+          <h1 className="font-montserrat font-semibold text-[54px] leading-[62px] text-white mt-2 
+          max-[1024px]:text-[48px] max-[1024px]:leading-[56px] max-[768px]:text-[44px] max-[768px]:leading-[52px] max-[413px]:text-[28px] max-[413px]:leading-[32px]">
             Featured Work
           </h1>
         </div>
       </div>
 
       {/* ✅ YOUR ORIGINAL SECTION (UNCHANGED) */}
-     <div className="bg-white pt-[60px] pb-[80px] border-b border-[#E5E5E5] px-[160px]">
-        <div className="grid md:grid-cols-2 gap-15 mb-8.5">
+     <div className="bg-white pt-[60px] pb-[80px] border-b border-[#E5E5E5] px-[160px] 
+     max-[1024px]:px-10 max-[768px]:px-6 max-[413px]:px-4 max-[413px]:pt-10 max-[413px]:pb-12 min-[1024px]:max-[1200px]:px-[120px]">
+        <div className="grid md:grid-cols-2 gap-15 mb-8.5 max-[1024px]:gap-12 max-[768px]:gap-10 max-[413px]:gap-6">
        {(showAll ? portfolio : portfolio.slice(0, 6)).map((item) => (
             <div
               key={item.id}
               onClick={() => goToDetails(item)}
-              className="group relative rounded-xl overflow-hidden cursor-pointer"
+              className="group relative rounded-xl overflow-hidden cursor-pointer min-[1024px]:max-[1200px]:origin-top min-[1024px]:max-[1200px]:scale-[1.032]"
             >
               <img
                 src={item.image}
                 alt={item.title}
-                className="w-full h-[280px] object-cover"
+                className="w-full h-[280px] object-cover max-[413px]:h-[230px]"
               />
 
               {/* Overlay */}
               <div className="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-all duration-300" />
 
               {/* Content */}
-              <div className="absolute bottom-6 left-6 text-white">
-                <h3 className="font-montserrat font-bold pb-1 text-[26px] leading-[29.28px] text-white">
+              <div className="absolute bottom-6 left-6 text-white max-[413px]:bottom-4 max-[413px]:left-4">
+                <h3 className="font-montserrat font-bold pb-1 text-[26px] leading-[29.28px] text-white max-[413px]:text-[22px] max-[413px]:leading-normal">
                   {item.title}
                 </h3>
 
-                <p className="font-montserrat font-medium text-[14px] leading-[24.29px] text-[#E2E2E2]">
+                <p className="font-montserrat font-medium text-[14px] leading-[24.29px] text-[#E2E2E2] max-[413px]:text-[12px] max-[413px]:leading-tight">
                   {item.desc}
                 </p>
               </div>
 
               {/* Arrow */}
               {/* Arrow Button */}
-              <div className="absolute top-5.5 right-5.5 w-[50px] h-[50px] bg-white rounded-full flex items-center justify-center shadow-md transition-all duration-300 group-hover:bg-[#345261] group-hover:scale-110">
+              <div className="absolute top-5.5 right-5.5 w-[50px] h-[50px] bg-white rounded-full flex items-center justify-center shadow-md transition-all duration-300 group-hover:bg-[#345261] group-hover:scale-110 
+              max-[413px]:top-4 max-[413px]:right-4 max-[413px]:w-10 max-[413px]:h-10">
                 <ArrowRight
                   size={25}
-                  className="text-[#345261] transform rotate-[315deg] group-hover:rotate-[360deg] group-hover:text-white transition-all duration-300"
+                  className="text-[#345261] transform rotate-[315deg] group-hover:rotate-[360deg] group-hover:text-white transition-all duration-300 max-[413px]:w-5 max-[413px]:h-5"
                 />
               </div>
             </div>
           ))}
         </div>
 
-        <div className="text-center ">
+        <div className="text-center max-[413px]:mt-6">
          {/* <button
   onClick={() => setShowAll(true)}
   className="font-montserrat font-bold text-[14px] leading-[21px] tracking-[2.24px] uppercase text-[#395563] flex items-center gap-2 mx-auto"
@@ -151,7 +155,7 @@ const portfolio = [
 
 <button
   onClick={() => setShowAll(!showAll)}
-  className="font-montserrat font-bold text-[14px] leading-[21px] tracking-[2.24px] uppercase text-[#395563] flex items-center gap-2 mx-auto"
+  className="font-montserrat font-bold text-[14px] leading-[21px] tracking-[2.24px] uppercase text-[#395563] flex items-center gap-2 mx-auto max-[413px]:text-[13px]"
 >
   {showAll ? "SHOW LESS" : "SHOW ALL"} <ArrowRight size={14} />
 </button>
