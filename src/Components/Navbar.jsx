@@ -181,7 +181,7 @@
 // }
 
 import { useMemo, useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import { ChevronDown, Menu, X } from "lucide-react";
 
 const LINKS = [
@@ -194,23 +194,27 @@ const LINKS = [
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
+  const location = useLocation();
 
   const linkBase =
     "relative inline-flex items-center gap-1 text-[13px] font-bold tracking-[0.08em] text-[#212529D4] hover:text-[#212529] pb-7";
 
 const navLinkClass = useMemo(
   () =>
-    ({ isActive }) =>
-      [
+    ({ isActive, to }) => {
+      const isPortfolioActive = to === "/portfolio" && location.pathname === "/portfolio-details";
+      const trulyActive = isActive || isPortfolioActive;
+      return [
         linkBase,
         "after:absolute after:left-0 after:bottom-0 after:h-[4px] after:bg-[#345261] after:transition-all after:duration-300",
-        isActive ? "after:w-full" : "after:w-0",
-      ].join(" "),
-  [linkBase]
+        trulyActive ? "after:w-full" : "after:w-0",
+      ].join(" ");
+    },
+  [linkBase, location.pathname]
 );
 
   return (
-    <header className="sticky top-0 z-50 bg-[#Ffffff] ">
+  <header className="sticky top-0 z-[999] bg-white ">
       
       {/* Navbar */}
       <div className="w-full border-b-1 border-[#ebebeb]">
@@ -230,7 +234,7 @@ const navLinkClass = useMemo(
           <ul className="hidden md:flex items-end justify-center gap-[40px]">
             {LINKS.map((l) => (
               <li key={l.to}>
-                <NavLink to={l.to} end={l.end} className={navLinkClass}>
+                <NavLink to={l.to} end={l.end} className={({ isActive }) => navLinkClass({ isActive, to: l.to })}>
                   {l.label}
                   {l.hasDropdown ? <ChevronDown className="h-3 w-3" /> : null}
                 </NavLink>

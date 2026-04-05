@@ -9,7 +9,7 @@ import logo from "../../../assets/logo.png";
 
 export default function SupportBar() {
   return (
-    <div className="px-[75px] mb-1 bg-[#ffffff] max-[1024px]:px-6 max-[768px]:px-4 max-[413px]:px-0 max-[413px]:flex max-[413px]:justify-center">
+    <div className="px-[75px] mb-1  max-[1024px]:px-6 max-[768px]:px-4 max-[413px]:px-0 max-[413px]:flex max-[413px]:justify-center">
       <div className="bg-white rounded-[14px] shadow-[0px_0px_20px_2px_#00000012] px-[75px] pt-[37px] pb-[45px] flex items-start justify-between max-[1200px]:flex-wrap max-[1024px]:justify-center max-[1200px]:gap-x-12 max-[1200px]:gap-y-10 max-[1024px]:px-6 max-[768px]:px-4 max-[413px]:px-[28px] max-[413px]:flex-col max-[413px]:gap-[25px] max-[413px]:max-w-[360px] max-[413px]:w-full">
         {/* Logo */}
 
