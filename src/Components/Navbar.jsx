@@ -202,8 +202,16 @@ export default function Navbar() {
 const navLinkClass = useMemo(
   () =>
     ({ isActive, to }) => {
-      const isPortfolioActive = to === "/portfolio" && location.pathname === "/portfolio-details";
-      const trulyActive = isActive || isPortfolioActive;
+      const isPortfolioActive =
+        to === "/portfolio" &&
+        location.pathname.startsWith("/portfolio");
+
+      const isServiceActive =
+        to === "/services" &&
+        location.pathname.startsWith("/service");
+
+      const trulyActive = isActive || isPortfolioActive || isServiceActive;
+
       return [
         linkBase,
         "after:absolute after:left-0 after:bottom-0 after:h-[4px] after:bg-[#345261] after:transition-all after:duration-300",

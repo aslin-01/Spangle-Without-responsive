@@ -15,6 +15,7 @@ const allProjects = [
     id: 1,
     title: "Elon Date App",
     image: img1,
+    gallery: [img1, img2, img3],
     desc: "Analytics-driven dating experience with smart matching.",
     fullDesc:
       "Spangles Webx is a tech-driven company passionate about delivering innovative digital products. With a focus on design, usability, and performance, we help startups and enterprises scale with impactful web and mobile solutions. we help startups and ",
@@ -47,6 +48,7 @@ const allProjects = [
     id: 2,
     title: "Waltur Website",
     image: img2,
+    gallery: [img2, img4, img5],
     desc: "Modern business website with performance optimization.",
     fullDesc:
       "Spangles Webx is a tech-driven company passionate about delivering innovative digital products. With a focus on design, usability, and performance, we help startups and enterprises scale with impactful web and mobile solutions. we help startups and ",
@@ -78,6 +80,7 @@ const allProjects = [
     id: 3,
     title: "AI Project",
     image: img3,
+    gallery: [img3, img5, img6, img7],
     desc: "AI-powered insights for smarter decision making.",
     fullDesc:
       "Spangles Webx is a tech-driven company passionate about delivering innovative digital products. With a focus on design, usability, and performance, we help startups and enterprises scale with impactful web and mobile solutions. we help startups and ",
@@ -109,6 +112,7 @@ const allProjects = [
     id: 4,
     title: "Hyper Design",
     image: img4,
+    gallery: [img4, img6],
     desc: "Minimal UI with futuristic interaction design.",
     fullDesc:
       "Spangles Webx is a tech-driven company passionate about delivering innovative digital products. With a focus on design, usability, and performance, we help startups and enterprises scale with impactful web and mobile solutions. we help startups and ",
@@ -140,6 +144,7 @@ const allProjects = [
     id: 5,
     title: "Laptop UI",
     image: img5,
+    gallery: [img5, img7, img8, img1],
     desc: "Clean dashboard interface for productivity tools.",
     fullDesc:
       "Spangles Webx is a tech-driven company passionate about delivering innovative digital products. With a focus on design, usability, and performance, we help startups and enterprises scale with impactful web and mobile solutions. we help startups and ",
@@ -171,6 +176,7 @@ const allProjects = [
     id: 6,
     title: "Fashion Mockup",
     image: img6,
+    gallery: [img6, img8, img2],
     desc: "Trendy fashion showcase with modern layout.",
     fullDesc:
       "Spangles Webx is a tech-driven company passionate about delivering innovative digital products. With a focus on design, usability, and performance, we help startups and enterprises scale with impactful web and mobile solutions. we help startups and ",
@@ -202,6 +208,7 @@ const allProjects = [
     id: 7,
     title: "Creative Studio",
     image: img7,
+    gallery: [img7, img1, img3, img4, img8],
     desc: "Creative branding and digital experience design.",
     fullDesc:
       "Spangles Webx is a tech-driven company passionate about delivering innovative digital products. With a focus on design, usability, and performance, we help startups and enterprises scale with impactful web and mobile solutions. we help startups and ",
@@ -233,6 +240,7 @@ const allProjects = [
     id: 8,
     title: "Mobile UI Kit",
     image: img8,
+    gallery: [img8, img3, img6],
     desc: "Modern mobile UI components and interactions.",
     fullDesc:
       "Spangles Webx is a tech-driven company passionate about delivering innovative digital products. With a focus on design, usability, and performance, we help startups and enterprises scale with impactful web and mobile solutions. we help startups and ",
@@ -261,45 +269,32 @@ const allProjects = [
   },
 ];
 
-const PortfolioDetails = () => {
-  const location = useLocation();
+function ProjectImageSlider({ images }) {
+  const list = Array.isArray(images) && images.length > 0 ? images : [];
 
-  // Find the initial project from allProjects based on the state passed from Portfolio.jsx
-  const initialProject =
-    allProjects.find((p) => p.id === location.state?.id) || allProjects[0];
-  const [currentProject, setCurrentProject] = useState(initialProject);
-
-  // slider state
   const [index, setIndex] = useState(0);
+  const [sliderPaused, setSliderPaused] = useState(false);
 
-  // Filter out the current project from the slider
-  const remainingProjects = allProjects.filter(
-    (item) => item.id !== currentProject.id,
-  );
-
-  // duplicate projects for infinite effect
-  const sliderItems = [...remainingProjects, ...remainingProjects];
-
-  const handleProjectClick = (project) => {
-    setCurrentProject(project);
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
+  const slideCount = list.length;
+  const sliderItems = slideCount > 0 ? [...list, ...list] : [];
+  const activeDotIndex =
+    slideCount > 0 ? ((index % slideCount) + slideCount) % slideCount : 0;
 
   useEffect(() => {
-    if (index >= remainingProjects.length) {
-      const timeout = setTimeout(() => {
-        setIndex(0);
-      }, 700);
-      return () => clearTimeout(timeout);
-    }
-  }, [index, remainingProjects.length]);
+    if (slideCount === 0 || index < slideCount) return undefined;
+    const timeout = setTimeout(() => {
+      setIndex(0);
+    }, 700);
+    return () => clearTimeout(timeout);
+  }, [index, slideCount]);
 
   useEffect(() => {
+    if (sliderPaused || slideCount <= 1) return undefined;
     const interval = setInterval(() => {
       setIndex((prev) => prev + 1);
     }, 2500);
     return () => clearInterval(interval);
-  }, []);
+  }, [sliderPaused, slideCount]);
 
   const [slideStep, setSlideStep] = useState(460 + 30);
   const sliderViewportRef = useRef(null);
@@ -333,6 +328,84 @@ const PortfolioDetails = () => {
     };
   }, []);
 
+  if (slideCount === 0) return null;
+
+  return (
+    <div
+      className="w-full"
+      onMouseEnter={() => setSliderPaused(true)}
+      onMouseLeave={() => setSliderPaused(false)}
+      onClick={(e) => e.preventDefault()}
+      onKeyDown={(e) => {
+        if (e.key === "Enter" || e.key === " ") e.preventDefault();
+      }}
+      role="presentation"
+    >
+      <div
+        ref={sliderViewportRef}
+        className="overflow-hidden w-full pt-[60px] max-lg:pt-12 max-md:pt-10 max-sm:pt-8 max-[413px]:pt-6"
+      >
+        <div
+          className={`flex ${index === 0 ? "" : "transition-transform duration-700 ease-in-out"}`}
+          style={{
+            transform: `translateX(calc(-${index * slideStep}px))`,
+          }}
+        >
+          {sliderItems.map((src, i) => (
+            <div
+              key={`${i}-${src}`}
+              className="flex-shrink-0 cursor-default max-[413px]:!mr-0 max-[413px]:!h-[230px] max-[413px]:!w-full max-[413px]:!min-w-0 max-[413px]:!shrink-0 max-[413px]:!grow-0 max-[413px]:!basis-full"
+              style={{ width: "460px", height: "380px", marginRight: "30px" }}
+            >
+              <div className="relative h-full w-full overflow-hidden">
+                <img
+                  src={src}
+                  alt=""
+                  draggable={false}
+                  className="h-full w-full object-cover select-none"
+                  style={{ borderRadius: 0 }}
+                />
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+      <div
+        className="flex justify-center gap-[4px] pt-6 max-[413px]:pt-4"
+        role="tablist"
+        aria-label="Project images"
+      >
+        {list.map((src, i) => (
+          <button
+            key={`dot-${src}-${i}`}
+            type="button"
+            role="tab"
+            aria-selected={i === activeDotIndex}
+            aria-label={`Go to image ${i + 1} of ${slideCount}`}
+            className="flex h-9 w-9 shrink-0 cursor-pointer items-center justify-center rounded-full border-0 bg-transparent p-0 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#345261] focus-visible:ring-offset-2"
+            onClick={(e) => {
+              e.stopPropagation();
+              setIndex(i);
+            }}
+          >
+            <span
+              className={`h-3 w-3 rounded-full transition-colors duration-300 ${
+                i === activeDotIndex ? "bg-[#345261]" : "bg-gray-400"
+              }`}
+            />
+          </button>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+const PortfolioDetails = () => {
+  const location = useLocation();
+
+  const currentProject =
+    allProjects.find((p) => p.id === location.state?.id) || allProjects[0];
+
   return (
     <div className="font-sans text-gray-700 max-xl:overflow-x-hidden max-[413px]:overflow-x-hidden">
       {/* HERO SECTION */}
@@ -361,40 +434,10 @@ const PortfolioDetails = () => {
       {/* SLIDER SECTION */}
       {/* SLIDER SECTION */}
       <div className="pl-[100px] pb-[60px] max-xl:pl-16 max-xl:pr-8 max-xl:pb-14 max-lg:pl-12 max-lg:pr-6 max-lg:pb-12 max-md:pl-8 max-md:pr-5 max-md:pb-11 max-sm:pl-6 max-sm:pr-4 max-sm:pb-10 max-[413px]:pl-4 max-[413px]:pr-4 max-[413px]:pb-10">
-        <div
-          ref={sliderViewportRef}
-          className="overflow-hidden w-full pt-[60px] max-lg:pt-12 max-md:pt-10 max-sm:pt-8 max-[413px]:pt-6"
-        >
-          <div
-            className={`flex ${index === 0 ? "" : "transition-transform duration-700 ease-in-out"}`}
-            style={{
-              transform: `translateX(calc(-${index * slideStep}px))`, // 460 width + 30px gap
-            }}
-          >
-            {sliderItems.map((item, i) => (
-              <div
-                key={i}
-                className="flex-shrink-0 cursor-pointer group max-[413px]:!mr-0 max-[413px]:!h-[230px] max-[413px]:!w-full max-[413px]:!min-w-0 max-[413px]:!shrink-0 max-[413px]:!grow-0 max-[413px]:!basis-full"
-                style={{ width: "460px", height: "380px", marginRight: "30px" }}
-                onClick={() => handleProjectClick(item)}
-              >
-                <div className="relative w-full h-full overflow-hidden">
-                  <img
-                    src={item.image}
-                    alt={item.title}
-                    className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
-                    style={{ borderRadius: 0 }} // removes border radius
-                  />
-                  <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center max-[413px]:opacity-100 max-[413px]:bg-black/10">
-                    <p className="text-white font-semibold text-lg max-lg:text-base max-md:text-sm max-md:px-3 max-[413px]:text-sm max-[413px]:px-2 max-[413px]:text-center">
-                      {item.title}
-                    </p>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
+        <ProjectImageSlider
+          key={currentProject.id}
+          images={currentProject.gallery ?? [currentProject.image]}
+        />
       </div>
 
       {/* CONTENT SECTION */}

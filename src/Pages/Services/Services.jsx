@@ -1,0 +1,339 @@
+import React from "react";
+import ServiceImg from "../../assets/Service-banner.jpg";
+import cyberImg from "../../assets/portfolio1.jpg";
+import digitalImg from "../../assets/portfolio2.jpg";
+import productImg from "../../assets/portfolio3.jpg";
+import webImg from "../../assets/portfolio4.jpg";
+import testingImg from "../../assets/portfolio5.jpg";
+import appImg from "../../assets/portfolio6.jpg";
+import Support from "../About/Components/Support";
+import { useNavigate } from "react-router-dom";
+import Serviceicon from "../../assets/service-icon.png"; // change to your icon
+
+
+export const services = [ 
+  {
+    title: "Cyber Security",
+    image: cyberImg,
+    description: "Protect your systems and data from cyber threats.",
+    advantages: [
+      "Threat detection and prevention",
+      "Network security monitoring",
+      "Data protection and encryption",
+      "Vulnerability assessments",
+      "Risk analysis and reporting",
+    ],
+    whyChoose: [
+      {
+        title: "Experienced Team",
+        desc: "Certified experts ensuring top-level security.",
+      },
+      {
+        title: "Advanced Tools",
+        desc: "We use the latest cybersecurity technologies.",
+      },
+      {
+        title: "24/7 Monitoring",
+        desc: "Constant protection for your systems.",
+      },
+      {
+        title: "Reliable Support",
+        desc: "Quick response to security incidents.",
+      },
+    ],
+  },
+
+  {
+    title: "Digital Services",
+    image: digitalImg,
+    description: "Boost your online presence with smart digital solutions.",
+    advantages: [
+      "Social media management",
+      "Search engine optimization (SEO)",
+      "Content marketing strategies",
+      "Brand awareness campaigns",
+      "Analytics and performance tracking",
+    ],
+    whyChoose: [
+      {
+        title: "Data-Driven Strategy",
+        desc: "We use analytics to maximize your reach.",
+      },
+      {
+        title: "Creative Campaigns",
+        desc: "Engaging content that connects with your audience.",
+      },
+      {
+        title: "Multi-Channel Marketing",
+        desc: "We cover all major digital platforms.",
+      },
+      {
+        title: "Measurable Results",
+        desc: "Trackable growth and ROI-focused approach.",
+      },
+    ],
+  },
+
+  {
+    title: "Product Design",
+    image: productImg,
+    description: "Design user-friendly and visually stunning products.",
+    advantages: [
+      "User-centered design approach",
+      "Wireframing and prototyping",
+      "UI/UX optimization",
+      "Interactive design systems",
+      "Consistency across platforms",
+    ],
+    whyChoose: [
+      {
+        title: "Creative Designers",
+        desc: "Skilled team focused on innovation and usability.",
+      },
+      {
+        title: "User Experience Focus",
+        desc: "Designs that improve customer satisfaction.",
+      },
+      {
+        title: "Modern Tools",
+        desc: "We use Figma, Adobe XD, and more.",
+      },
+      {
+        title: "Fast Iterations",
+        desc: "Quick feedback and design improvements.",
+      },
+    ],
+  },
+
+  {
+    title: "Web Development",
+    image: webImg,
+    description: "Build modern and scalable web applications.",
+    advantages: [
+      "Responsive design",
+      "SEO optimization",
+      "Fast loading performance",
+      "Secure architecture",
+      "Cross-browser compatibility",
+    ],
+    whyChoose: [
+      {
+        title: "Modern Technologies",
+        desc: "We use React, Node, and latest frameworks.",
+      },
+      {
+        title: "Custom Solutions",
+        desc: "Tailored websites for your business needs.",
+      },
+      {
+        title: "High Performance",
+        desc: "Optimized for speed and scalability.",
+      },
+      {
+        title: "Ongoing Support",
+        desc: "We maintain and update your website.",
+      },
+    ],
+  },
+
+  {
+    title: "Software Testing",
+    image: testingImg,
+    description: "Ensure your software is bug-free and reliable.",
+    advantages: [
+      "Manual and automated testing",
+      "Performance and load testing",
+      "Bug tracking and reporting",
+      "Quality assurance processes",
+      "Improved product reliability",
+    ],
+    whyChoose: [
+      {
+        title: "Expert QA Team",
+        desc: "Highly experienced testers ensuring quality.",
+      },
+      {
+        title: "Automation Tools",
+        desc: "Faster and more accurate testing processes.",
+      },
+      {
+        title: "Detailed Reports",
+        desc: "Clear insights into bugs and performance.",
+      },
+      {
+        title: "Reliable Delivery",
+        desc: "We ensure your product is market-ready.",
+      },
+    ],
+  },
+
+  {
+    title: "App Development",
+    image: appImg,
+    description: "Create powerful mobile apps for iOS and Android.",
+    advantages: [
+      "Cross-platform development",
+      "User-friendly interfaces",
+      "High performance apps",
+      "Secure data handling",
+      "Scalable architecture",
+    ],
+    whyChoose: [
+      {
+        title: "Expert Developers",
+        desc: "Skilled in modern mobile technologies.",
+      },
+      {
+        title: "Custom App Solutions",
+        desc: "Apps tailored to your business goals.",
+      },
+      {
+        title: "Seamless Experience",
+        desc: "Smooth performance across devices.",
+      },
+      {
+        title: "Post-Launch Support",
+        desc: "Continuous updates and maintenance.",
+      },
+    ],
+  },
+];
+
+const Services = () => {
+    const navigate = useNavigate();
+  return (
+    <div className="w-full">
+      {/* Hero Section */}
+      <div className="relative h-[360px] w-full max-[413px]:h-[300px]">
+        <img
+          src={ServiceImg} // change to your image
+          alt="banner"
+          className="w-full h-full object-cover object-center"
+        />
+
+        {/* overlay */}
+        <div className="absolute inset-0 bg-black/40"></div>
+
+        {/* text */}
+        <div
+          className="absolute inset-0 flex flex-col justify-end px-[100px] pb-25 text-white 
+    max-[1024px]:px-10 max-[1024px]:pb-20 
+    max-[768px]:px-6 max-[768px]:pb-16 
+    max-[413px]:px-4 max-[413px]:pb-10 
+    min-[1024px]:max-[1200px]:px-[72px]"
+        >
+          {/* breadcrumb */}
+          <p className="font-[Montserrat] font-bold text-[14px] leading-[21px] tracking-[2.24px] uppercase text-white max-[413px]:text-[12px]">
+            Home / Services {/* change text */}
+          </p>
+
+          {/* heading */}
+          <h1
+            className="font-montserrat font-semibold text-[54px] leading-[62px] text-white mt-2 
+      max-[1024px]:text-[48px] max-[1024px]:leading-[56px] 
+      max-[768px]:text-[44px] max-[768px]:leading-[52px] 
+      max-[413px]:text-[28px] max-[413px]:leading-[32px]"
+          >
+            Services We Offer {/* change title */}
+          </h1>
+        </div>
+      </div>
+
+      {/* Services Grid */}
+      <div className="px-[100px] py-[120px] border-b-[0.8px] border-[#E5E5E5]">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-[30px] gap-y-[50px]">
+          {services.map((service, index) => (
+            <div
+              key={index}
+              onClick={() =>
+                navigate("/service-details", {
+                  state: {
+                    ...service,
+                    gallery: [service.image], // can expand later
+                  },
+                })
+              }
+              className="relative group cursor-pointer rounded-xl overflow-hidden w-[390px] h-[432px] shadow-[0px_0px_19.22px_0px_#00000012]"
+            >
+              {/* Image */}
+              <img
+                src={service.image}
+                alt={service.title}
+                className="w-full h-full object-cover"
+              />
+
+              {/* 🔹 Gradient (default) */}
+              <div
+                className="absolute inset-0 
+          bg-[linear-gradient(0deg,_#395563_0%,_rgba(20,34,92,0)_100%)]
+          transition-all duration-500 ease-in-out 
+          group-hover:opacity-0"
+              />
+
+              {/* 🔹 Default Content */}
+              <div className="absolute bottom-14 left-15 right-6 text-white transition-all duration-500 group-hover:opacity-0">
+                {/* ICON — #FFFFFF default; #395563 when card hovered (hover panel icon) */}
+                <div
+                  className="relative w-12 h-12 mb-4 bg-white"
+                  style={{
+                    WebkitMaskImage: `url(${Serviceicon})`,
+                    WebkitMaskSize: "contain",
+                    WebkitMaskRepeat: "no-repeat",
+                    WebkitMaskPosition: "center",
+                    maskImage: `url(${Serviceicon})`,
+                    maskSize: "contain",
+                    maskRepeat: "no-repeat",
+                    maskPosition: "center",
+                  }}
+                  aria-hidden
+                />
+
+                <h3 className="font-[Montserrat] font-medium text-[20px] leading-[23.07px] tracking-[0%] align-middle text-[#ffffff]">
+                  {service.title}
+                </h3>
+              </div>
+
+              {/* 🔹 Hover White Card */}
+              <div
+                className="absolute bottom-6 left-6 right-6 bg-white rounded-xl px-5 pt-5 pb-6  
+          opacity-0 translate-y-6 
+          group-hover:opacity-100 group-hover:translate-y-0 
+          transition-all duration-500 ease-in-out"
+              >
+                {/* ICON — #395563 (visible on card hover with this panel) */}
+                <div
+                  className="w-12 h-12 mb-4 bg-[#395563]"
+                  style={{
+                    WebkitMaskImage: `url(${Serviceicon})`,
+                    WebkitMaskSize: "contain",
+                    WebkitMaskRepeat: "no-repeat",
+                    WebkitMaskPosition: "center",
+                    maskImage: `url(${Serviceicon})`,
+                    maskSize: "contain",
+                    maskRepeat: "no-repeat",
+                    maskPosition: "center",
+                  }}
+                  aria-hidden
+                />
+
+                <h3 className="mb-5 font-[Montserrat] font-medium text-[20px] leading-[23.07px] text-[#395563]">
+                  {service.title}
+                </h3>
+
+                <p className="font-normal text-[16px] leading-[23.07px] text-[#3955638F]">
+                  {service.description}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div className="-mt-[40px] relative z-10">
+        <Support />
+      </div>
+    </div>
+  );
+};
+
+export default Services;

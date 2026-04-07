@@ -3,13 +3,13 @@ import Navbar from "./Components/Navbar";
 import Footer from "./Components/Footer";
 import About from "./Pages/About/About";
 import Home from "./Pages/Home";
-import Services from "./Pages/Services";
+import Services from "./Pages/Services/Services";
 import Portfolio from "./Pages/Portfolio/Portfolio";
 import PortfolioDetails from "./Pages/Portfolio/PortfolioDetails";
-import Career from "./Pages/Career";
+import Career from "./Pages/Career/Career";
 import Contact from "./Pages/Contact/Contact";
 import ScrollToTop from "./Components/ScrollToTop";
-
+import Servicedetails from "./Pages/Services/Servicedetails";
 function App() {
   const { pathname } = useLocation();
 
@@ -24,6 +24,7 @@ function App() {
           <Route path="/services" element={<Services />} />
           <Route path="/portfolio" element={<Portfolio />} />
           <Route path="/portfolio-details" element={<PortfolioDetails />} />
+          <Route path="/service-details" element={<Servicedetails />} />
           <Route path="/career" element={<Career />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="*" element={<Navigate to="/" replace />} />
