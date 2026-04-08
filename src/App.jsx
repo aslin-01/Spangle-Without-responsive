@@ -9,7 +9,7 @@ import PortfolioDetails from "./Pages/Portfolio/PortfolioDetails";
 import Career from "./Pages/Career/Career";
 import Contact from "./Pages/Contact/Contact";
 import ScrollToTop from "./Components/ScrollToTop";
-import Servicedetails from "./Pages/Services/Servicedetails";
+import ServiceDetails from "./Pages/Services/ServiceDetails";
 function App() {
   const { pathname } = useLocation();
 
@@ -17,14 +17,14 @@ function App() {
     <div className="w-full max-w-[100vw]">
       <ScrollToTop />
       <Navbar />
-      <main key={pathname} className="animate-fade-in">
+      <main key={pathname} className="animate-fade-in pt-[115px]">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/services" element={<Services />} />
           <Route path="/portfolio" element={<Portfolio />} />
           <Route path="/portfolio-details" element={<PortfolioDetails />} />
-          <Route path="/service-details" element={<Servicedetails />} />
+          <Route path="/service-details" element={<ServiceDetails />} />
           <Route path="/career" element={<Career />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="*" element={<Navigate to="/" replace />} />

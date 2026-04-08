@@ -13,6 +13,8 @@ import { useNavigate } from "react-router-dom";
 const ServiceDetails = () => {
   const location = useLocation();
 
+
+
   const [service, setService] = React.useState(
     location.state || {
       title: "Cyber Security",
@@ -37,35 +39,59 @@ const ServiceDetails = () => {
 
   useEffect(() => {
     const slider = scrollRef.current;
+    if (!slider) return;
+
+    const handleScroll = () => {
+      const leftFade = document.getElementById("leftFade");
+      const rightFade = document.getElementById("rightFade");
+
+      // ✅ LEFT FADE
+      if (slider.scrollLeft > 10) {
+        leftFade.style.opacity = "1";
+      } else {
+        leftFade.style.opacity = "0";
+      }
+
+      // ✅ RIGHT FADE
+      if (slider.scrollLeft + slider.clientWidth >= slider.scrollWidth - 10) {
+        rightFade.style.opacity = "0";
+      } else {
+        rightFade.style.opacity = "1";
+      }
+    };
 
     const interval = setInterval(() => {
-      if (!slider) return;
-
-      const cardWidth = slider.children[0].offsetWidth + 24; // gap-6
+      const isMobile = window.innerWidth <= 413;
+      const gap = isMobile ? 0 : 24;
+      const cardWidth = slider.children[0].offsetWidth + gap;
 
       slider.scrollBy({
         left: cardWidth,
         behavior: "smooth",
       });
 
-      // 🔁 seamless loop (no jump visible)
+      // 🔁 seamless loop
       if (slider.scrollLeft >= slider.scrollWidth / 2) {
         slider.scrollLeft = 0;
       }
     }, 3000);
 
+    slider.addEventListener("scroll", handleScroll);
 
-    
-
-    return () => clearInterval(interval);
+    return () => {
+      clearInterval(interval);
+      slider.removeEventListener("scroll", handleScroll);
+    };
   }, []);
 
-useEffect(() => {
-  if (location.state) {
-    setService(location.state);
-  }
-}, [location.state]);
-  
+
+
+  useEffect(() => {
+    if (location.state) {
+      setService(location.state);
+    }
+  }, [location.state]);
+
   return (
     <div className="w-full text-gray-700">
       {/* HERO SECTION */}
@@ -105,7 +131,15 @@ useEffect(() => {
       </div>
 
       {/* CONTENT SECTION */}
-      <div className="px-[100px] py-[100px] max-md:px-6">
+      <div
+        className="
+  px-[100px] py-[100px]
+  max-[1201px]:px-[80px] max-[1201px]:py-[80px]
+    max-[1025px]:px-[60px] max-[1025px]:py-[60px]
+  max-[768px]:px-10 max-[768px]:py-10
+  max-[413px]:px-6 max-[413px]:py-6
+"
+      >
         <div className="flex gap-[30px] max-md:flex-col">
           {/* LEFT COLUMN */}
           <div className="flex-[1.2]">
@@ -162,9 +196,16 @@ useEffect(() => {
       </div>
 
       {/* VIEW ALL SERVICES SLIDER */}
-      <div className="pl-[100px] pt-[65px] pb-[140px] bg-[#F7F9FB] max-md:px-6">
+      <div
+        className="
+  px-[90px] pt-[65px] pb-[140px] bg-[#F7F9FB]
+  max-[1024px]:px-[60px] max-[1024px]:pb-[100px]
+  max-[768px]:px-10 max-[768px]:py-10
+  max-[413px]:px-6 max-[413px]:pt-6 max-[413px]:pb-20
+"
+      >
         {/* TOP BAR */}
-        <div className="flex justify-between items-center mb-[40px]">
+        {/* <div className="flex justify-between items-center mb-[40px]">
           <p className="font-[Montserrat] font-bold text-[14px] leading-[21px] tracking-[2.24px] text-[#345261] uppercase">
             View All Services
           </p>
@@ -173,7 +214,7 @@ useEffect(() => {
             All Services
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1"
+              className="w-4 h-5 transition-transform duration-300 group-hover:translate-x-1"
               fill="none"
               viewBox="0 0 24 24"
               stroke="white"
@@ -186,12 +227,61 @@ useEffect(() => {
               />
             </svg>
           </button>
+        </div> */}
+
+
+
+        <div className="
+  flex justify-between items-center mb-[40px]
+  max-[768px]:flex-col max-[768px]:items-center max-[768px]:gap-4
+">
+
+          <p className="
+    font-[Montserrat] font-bold text-[14px] leading-[21px] tracking-[2.24px] text-[#345261] uppercase
+    max-[413px]:text-[12px] max-[413px]:leading-[18px]
+  ">
+            View All Services
+          </p>
+
+          <button className="
+    group bg-[#345261] text-white px-[25px] py-[16px] rounded-[10px] text-[12px] leading-[18px] font-bold uppercase flex items-center gap-2 mr-0
+
+    max-[1201px]:mr-0
+    max-[1025px]:mr-0
+
+    max-[768px]:mr-0 
+    max-[768px]:w-[50%] 
+    max-[768px]:justify-center
+
+    max-[1201px]:px-[22px] max-[1201px]:py-[14px]
+    max-[1025px]:px-[20px] max-[1025px]:py-[12px]
+
+    max-[413px]:px-[16px] max-[413px]:py-[10px] max-[413px]:text-[11px]
+  ">
+            All Services
+
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="w-4 h-5 transition-transform duration-300 group-hover:translate-x-1"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="white"
+              strokeWidth={2}
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M5 12h14M13 6l6 6-6 6"
+              />
+            </svg>
+          </button>
+
         </div>
 
         {/* SLIDER */}
-        {/* SLIDER WRAPPER */}
-        <div className="relative">
-          {/* ✅ RIGHT SIDE BLUR (AFTER ARROW) */}
+
+        {/* <div className="relative">
+   
           <div
             className="pointer-events-none absolute right-0 top-0 h-full w-[60px] 
   bg-gradient-to-l from-[#F7F9FB] to-transparent z-20"
@@ -218,7 +308,7 @@ useEffect(() => {
               />
             </svg>
           </button>
-          {/* RIGHT BUTTON */}
+        
           <button
             onClick={() => scroll("right")}
             className="absolute right-[15px] top-1/2 -translate-y-1/2 
@@ -244,7 +334,7 @@ useEffect(() => {
             </svg>
           </button>
 
-          {/* ✅ SLIDER */}
+      
           <div
             ref={scrollRef}
             className="flex gap-6 overflow-x-auto no-scrollbar scroll-smooth pr-[60px]"
@@ -267,14 +357,14 @@ useEffect(() => {
     min-w-[calc((100%-48px)/3)] h-[432px] 
     shadow-[0px_0px_19.22px_0px_#00000012]"
               >
-                {/* IMAGE */}
+             
                 <img
                   src={item.image}
                   alt={item.title}
                   className="w-full h-full object-cover"
                 />
 
-                {/* GRADIENT */}
+             
                 <div
                   className="absolute inset-0 
       bg-[linear-gradient(0deg,_#395563_0%,_rgba(20,34,92,0)_100%)]
@@ -282,7 +372,7 @@ useEffect(() => {
       group-hover:opacity-0"
                 />
 
-                {/* DEFAULT CONTENT */}
+             
                 <div
                   className="absolute bottom-14 left-6 right-6 text-white 
     transition-all duration-500 group-hover:opacity-0"
@@ -306,7 +396,7 @@ useEffect(() => {
                   </h3>
                 </div>
 
-                {/* ✅ HOVER WHITE CARD (EXACT MATCH) */}
+           
                 <div
                   className="absolute bottom-6 left-6 right-6 
       bg-white rounded-xl px-5 pt-5 pb-6  
@@ -314,7 +404,7 @@ useEffect(() => {
       group-hover:opacity-100 group-hover:translate-y-0 
       transition-all duration-500 ease-in-out z-20"
                 >
-                  {/* ICON */}
+          
                   <div
                     className="w-12 h-12 mb-4 bg-[#395563]"
                     style={{
@@ -329,12 +419,188 @@ useEffect(() => {
                     }}
                   />
 
-                  {/* TITLE */}
+                
                   <h3 className="mb-5 font-[Montserrat] font-medium text-[20px] leading-[23px] text-[#395563]">
                     {item.title}
                   </h3>
 
-                  {/* DESCRIPTION */}
+                  <p className="font-normal text-[16px] leading-[23px] text-[#3955638F]">
+                    {item.description}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div> */}
+
+        <div className="relative">
+
+          {/* RIGHT GREY SHADE */}
+          <div
+            id="rightFade"
+            className="pointer-events-none absolute right-[-60px] top-0 h-full w-[60px] 
+  bg-gradient-to-l from-[#F7F9FB] to-transparent z-20 max-[413px]:hidden transition-opacity duration-300"
+          />
+
+          {/* LEFT GREY SHADE */}
+          <div
+            id="leftFade"
+            className="pointer-events-none absolute left-[-60px] top-0 h-full w-[60px] 
+  bg-gradient-to-r from-[#F7F9FB] to-transparent z-20 max-[413px]:hidden opacity-0 transition-opacity duration-300"
+          />
+
+          <button
+            onClick={() => scroll("left")}
+            className="absolute left-[-50px] top-1/2 -translate-y-1/2 
+  w-[61px] h-[61px] bg-white border border-[#E5E5E5] 
+  rounded-[10px] flex items-center justify-center shadow-sm z-30 max-[413px]:hidden"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="w-5 h-5 text-[#345261] rotate-180"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              strokeWidth={2}
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M5 12h14M13 6l6 6-6 6"
+              />
+            </svg>
+          </button>
+
+          <button
+            onClick={() => scroll("right")}
+            className="absolute right-[-50px] top-1/2 -translate-y-1/2 
+  w-[61px] h-[61px] 
+  bg-white border border-[#E5E5E5] 
+  rounded-[10px] 
+  flex items-center justify-center 
+  shadow-sm z-30 max-[413px]:hidden"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="w-5 h-5 text-[#345261]"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              strokeWidth={2}
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M5 12h14M13 6l6 6-6 6"
+              />
+            </svg>
+          </button>
+
+
+          <div
+            ref={scrollRef}
+            className="
+    flex gap-6 overflow-x-auto no-scrollbar scroll-smooth 
+    pr-[60px] pl-[60px] -ml-[60px] -mr-[60px]
+
+    max-[413px]:px-0 
+    max-[413px]:ml-0 max-[413px]:mr-0
+    max-[413px]:gap-0
+  "
+          >
+
+
+            {[...services, ...services].map((item, index) => (
+              <div
+                key={index}
+                onClick={() => {
+                  setService({
+                    ...item,
+                    gallery: [item.image],
+                  });
+
+                  window.scrollTo({
+                    top: 0,
+                    behavior: "smooth",
+                  });
+                }}
+                className="
+  relative group cursor-pointer rounded-xl overflow-hidden 
+  min-w-[calc((100%-48px)/3)] h-[432px] 
+  shadow-[0px_0px_19.22px_0px_#00000012]
+
+  max-[413px]:min-w-full
+  max-[413px]:max-w-full
+  max-[413px]:flex-none
+"
+              >
+
+                <img
+                  src={item.image}
+                  alt={item.title}
+                  className="w-full h-full object-cover"
+                />
+
+
+                <div
+                  className="absolute inset-0 
+      bg-[linear-gradient(0deg,_#395563_0%,_rgba(20,34,92,0)_100%)]
+      transition-all duration-500 ease-in-out 
+      group-hover:opacity-0"
+                />
+
+
+                <div
+                  className="absolute bottom-14 left-6 right-6 text-white 
+    transition-all duration-500 group-hover:opacity-0"
+                >
+                  <div
+                    className="w-12 h-12 mb-4 bg-white"
+                    style={{
+                      WebkitMaskImage: `url(${Serviceicon})`,
+                      WebkitMaskSize: "contain",
+                      WebkitMaskRepeat: "no-repeat",
+                      WebkitMaskPosition: "center",
+                      maskImage: `url(${Serviceicon})`,
+                      maskSize: "contain",
+                      maskRepeat: "no-repeat",
+                      maskPosition: "center",
+                    }}
+                  />
+
+                  <h3 className="font-[Montserrat] font-medium text-[20px] leading-[23px] text-white">
+                    {item.title}
+                  </h3>
+                </div>
+
+
+                <div
+                  className="absolute bottom-6 left-6 right-6 
+      bg-white rounded-xl px-5 pt-5 pb-6  
+      opacity-0 translate-y-6 
+      group-hover:opacity-100 group-hover:translate-y-0 
+      transition-all duration-500 ease-in-out z-20"
+                >
+
+                  <div
+                    className="w-12 h-12 mb-4 bg-[#395563]"
+                    style={{
+                      WebkitMaskImage: `url(${Serviceicon})`,
+                      WebkitMaskSize: "contain",
+                      WebkitMaskRepeat: "no-repeat",
+                      WebkitMaskPosition: "center",
+                      maskImage: `url(${Serviceicon})`,
+                      maskSize: "contain",
+                      maskRepeat: "no-repeat",
+                      maskPosition: "center",
+                    }}
+                  />
+
+
+                  <h3 className="mb-5 font-[Montserrat] font-medium text-[20px] leading-[23px] text-[#395563]">
+                    {item.title}
+                  </h3>
+
                   <p className="font-normal text-[16px] leading-[23px] text-[#3955638F]">
                     {item.description}
                   </p>
@@ -343,6 +609,10 @@ useEffect(() => {
             ))}
           </div>
         </div>
+
+
+
+
       </div>
 
       {/* SUPPORT */}

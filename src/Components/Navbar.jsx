@@ -222,7 +222,7 @@ const navLinkClass = useMemo(
 );
 
   return (
-  <header className="sticky top-0 z-[999] bg-white ">
+    <header className="fixed top-0 left-0 w-full z-[1000] bg-white">
       
       {/* Navbar */}
       <div className="w-full border-b-1 border-[#ebebeb]">
