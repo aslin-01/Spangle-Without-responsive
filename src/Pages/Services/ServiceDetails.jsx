@@ -41,6 +41,15 @@ const ServiceDetails = () => {
     const slider = scrollRef.current;
     if (!slider) return;
 
+    let isHovered = false;
+    const setHovered = () => { isHovered = true; };
+    const setNotHovered = () => { isHovered = false; };
+    
+    slider.addEventListener("mouseenter", setHovered);
+    slider.addEventListener("mouseleave", setNotHovered);
+    slider.addEventListener("touchstart", setHovered, { passive: true });
+    slider.addEventListener("touchend", setNotHovered);
+
     const handleScroll = () => {
       const leftFade = document.getElementById("leftFade");
       const rightFade = document.getElementById("rightFade");
@@ -61,6 +70,22 @@ const ServiceDetails = () => {
     };
 
     const interval = setInterval(() => {
+      if (isHovered) return;
+
+      // 🔁 seamless loop instant reset
+      if (slider.children.length > 0) {
+        const firstSetCount = Math.floor(slider.children.length / 2);
+        const firstItem = slider.children[0];
+        const middleItem = slider.children[firstSetCount];
+
+        if (firstItem && middleItem) {
+          const shiftAmount = middleItem.offsetLeft - firstItem.offsetLeft;
+          if (slider.scrollLeft >= shiftAmount) {
+            slider.scrollLeft -= shiftAmount;
+          }
+        }
+      }
+
       const isMobile = window.innerWidth <= 413;
       const gap = isMobile ? 0 : 24;
       const cardWidth = slider.children[0].offsetWidth + gap;
@@ -69,11 +94,6 @@ const ServiceDetails = () => {
         left: cardWidth,
         behavior: "smooth",
       });
-
-      // 🔁 seamless loop
-      if (slider.scrollLeft >= slider.scrollWidth / 2) {
-        slider.scrollLeft = 0;
-      }
     }, 3000);
 
     slider.addEventListener("scroll", handleScroll);
@@ -81,6 +101,10 @@ const ServiceDetails = () => {
     return () => {
       clearInterval(interval);
       slider.removeEventListener("scroll", handleScroll);
+      slider.removeEventListener("mouseenter", setHovered);
+      slider.removeEventListener("mouseleave", setNotHovered);
+      slider.removeEventListener("touchstart", setHovered);
+      slider.removeEventListener("touchend", setNotHovered);
     };
   }, []);
 
@@ -137,12 +161,12 @@ const ServiceDetails = () => {
   max-[1201px]:px-[80px] max-[1201px]:py-[80px]
     max-[1025px]:px-[60px] max-[1025px]:py-[60px]
   max-[768px]:px-10 max-[768px]:py-10
-  max-[413px]:px-6 max-[413px]:py-6
+  max-[413px]:px-0 max-[413px]:py-6
 "
       >
         <div className="flex gap-[30px] max-md:flex-col">
           {/* LEFT COLUMN */}
-          <div className="flex-[1.2]">
+          <div className="flex-[1.2] max-[413px]:px-6">
             {/* Paragraph */}
             <p className="font-[Montserrat] font-normal text-[16px] leading-[32px] text-[#6B6A66] mb-6">
               Life is busy, and your time is precious. Let us take care of the
@@ -500,7 +524,7 @@ const ServiceDetails = () => {
           <div
             ref={scrollRef}
             className="
-    flex gap-6 overflow-x-auto no-scrollbar scroll-smooth 
+    flex gap-6 overflow-x-auto no-scrollbar 
     pr-[60px] pl-[60px] -ml-[60px] -mr-[60px]
 
     max-[413px]:px-0 
@@ -528,6 +552,11 @@ const ServiceDetails = () => {
   relative group cursor-pointer rounded-xl overflow-hidden 
   min-w-[calc((100%-48px)/3)] h-[432px] 
   shadow-[0px_0px_19.22px_0px_#00000012]
+
+  max-[1201px]:h-[380px]
+  
+  max-[1024px]:min-w-[calc((100%-24px)/2)]
+  max-[1024px]:h-[360px]
 
   max-[413px]:min-w-full
   max-[413px]:max-w-full
