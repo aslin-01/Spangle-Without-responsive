@@ -2,7 +2,7 @@ import { Navigate, Route, Routes, useLocation } from "react-router-dom";
 import Navbar from "./Components/Navbar";
 import Footer from "./Components/Footer";
 import About from "./Pages/About/About";
-import Home from "./Pages/Home";
+import Home from "./Pages/Landing/HomeApp";
 import Services from "./Pages/Services/Services";
 import Portfolio from "./Pages/Portfolio/Portfolio";
 import PortfolioDetails from "./Pages/Portfolio/PortfolioDetails";
@@ -30,7 +30,7 @@ function App() {
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </main>
-      <Footer />
+      {pathname === "/" ? null : <Footer />}
     </div>
   );
 }

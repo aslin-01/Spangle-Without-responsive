@@ -1,0 +1,18 @@
+import Home from "./Components/Home";
+import Abouthome from "./Components/Abouthome";
+import Servicehome from "./Components/Servicehome";
+import Partner from "./Components/Partner";
+import Contacthome from "./Components/Contacthome";
+import Footerhome from "./Components/Footerhome";
+export default function HomeApp() {
+  return (
+    <>
+      <Home />
+      <Abouthome />
+      <Servicehome/>
+      <Partner/>
+      <Contacthome/>
+      <Footerhome/>
+    </>
+  );
+}

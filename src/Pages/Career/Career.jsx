@@ -49,7 +49,7 @@ const Modal = ({ children, onClose }) => {
         onClick={onClose}
       >
         <motion.div
-          className="bg-white rounded-2xl shadow-xl w-[1200px] px-[80px] py-[100px] relative self-start max-[1201px]:w-[90%] max-[768px]:py-[60px] max-[768px]:px-[40px] max-[413px]:w-full max-[413px]:min-h-[70vh] max-[413px]:rounded-t-[24px] max-[413px]:rounded-b-[10px] max-[413px]:px-[20px] max-[413px]:py-[140px] max-[413px]:overflow-x-hidden max-[413px]:mb-0 max-[413px]:mt-0"
+          className="bg-white rounded-2xl shadow-xl w-[1200px] px-[80px] py-[100px] relative self-start max-[1201px]:w-[90%] max-[768px]:py-[60px] max-[768px]:px-[40px] max-[413px]:w-full max-[413px]:min-h-[70vh] max-[413px]:rounded-t-[24px] max-[413px]:rounded-b-[10px] max-[413px]:px-[20px] max-[413px]:py-[40px] max-[413px]:overflow-x-hidden max-[413px]:mb-0 max-[413px]:mt-0"
           initial={{ scale: 0.9, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           exit={{ scale: 0.9, opacity: 0 }}
