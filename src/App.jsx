@@ -17,7 +17,10 @@ function App() {
     <div className="w-full max-w-[100vw]">
       <ScrollToTop />
       <Navbar />
-      <main key={pathname} className="animate-fade-in pt-[115px]">
+      <main
+        key={pathname}
+        className="animate-fade-in pt-[115px] max-[413px]:pt-[88px]"
+      >
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />

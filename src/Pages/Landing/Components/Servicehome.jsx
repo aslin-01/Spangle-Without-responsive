@@ -72,7 +72,7 @@ export default function ServicesSection() {
       }
 
       const isMobile = window.innerWidth <= 413;
-      const gap = isMobile ? 0 : 24;
+      const gap = isMobile ? 24 : 24;
       const cardWidth = slider.children[0].offsetWidth + gap;
 
       slider.scrollBy({
@@ -98,42 +98,42 @@ export default function ServicesSection() {
       {/* SLIDER */}
       <div
         className="
-          pt-[60px] pb-[100px] bg-[#3f5f6b]
-          max-[1024px]:pb-[100px]
+          relative pt-[60px] pb-[100px] bg-[#3f5f6b]
           max-[768px]:py-10
-          max-[413px]:pt-6 max-[413px]:pb-20
+          max-[413px]:pt-[35px] max-[413px]:pb-[120px]
         "
       >
         <div
           className="bg-[#3f5f6b] pb-[60px] text-white
   px-[90px]
-  max-[1024px]:px-[60px]
   max-[768px]:px-10
-  max-[413px]:px-6"
+  max-[413px]:px-6 
+    max-[413px]:py-6
+  "
         >
-          <div className="flex justify-between items-end gap-10 flex-wrap">
+          <div className="flex justify-between items-end gap-10 flex-wrap max-[413px]:flex-col max-[413px]:items-start max-[413px]:gap-6">
             {/* LEFT */}
             <div>
               <p className="font-montserrat font-bold text-[14px] leading-[21px] tracking-[2.24px] uppercase text-white/70 mb-4">
                 OUR SERVICE
               </p>
 
-              <h2 className="font-montserrat font-semibold text-[32px] leading-[55px] tracking-[-1.06px] max-w-[520px]">
-                We Offer a Wide <br />
+              <h2 className="font-montserrat font-semibold text-[32px] leading-[55px] tracking-[-1.06px] max-w-[520px] max-[413px]:text-[24px] max-[413px]:leading-[32px] max-[413px]:max-w-[320px]">
+                We Offer a Wide <br className="hidden min-[1025px]:block" />
                 Variety of IT Services
               </h2>
             </div>
 
-            <div className="max-w-[600px] w-full flex justify-between items-end gap-10">
+            <div className="max-w-[600px] w-full flex justify-between items-end gap-10 max-[413px]:flex-col max-[413px]:items-start max-[413px]:gap-5">
               {/* DESCRIPTION (LEFT) */}
-              <p className="font-montserrat font-normal text-[16px] leading-[24px] text-white max-w-[360px]">
+              <p className="font-montserrat font-normal text-[16px] leading-[24px] text-white max-w-[360px] max-[413px]:text-[14px] max-[413px]:leading-[20px] max-[413px]:max-w-full">
                 Spangles Webx is a tech-driven company passionate about
                 delivering innovative digital products. With a focus on design,
                 usability, and performance,
               </p>
 
               {/* BUTTON (RIGHT) */}
-              <button className="font-montserrat font-bold text-[12px] leading-[18px] uppercase text-[#395563] bg-white px-[25px] py-[16px] rounded-lg flex items-center gap-2 whitespace-nowrap">
+              <button className="font-montserrat font-bold text-[12px] leading-[18px] uppercase text-[#395563] bg-white px-[25px] py-[16px] rounded-lg flex items-center gap-2 whitespace-nowrap max-[413px]:absolute max-[413px]:left-6 max-[413px]:bottom-8">
                 ALL SERVICES
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -159,14 +159,14 @@ export default function ServicesSection() {
           <div
             id="rightFade"
             className="pointer-events-none absolute right-0 top-0 h-full w-[60px] 
-          bg-gradient-to-l from-[#3f5f6b] to-transparent z-20 max-[413px]:hidden transition-opacity duration-300"
+          bg-gradient-to-l from-[#3f5f6b] to-transparent z-20 max-[413px]:w-[22px] max-[413px]:rounded-l-[22px] transition-opacity duration-300"
           />
 
           {/* LEFT GREY SHADE */}
           <div
             id="leftFade"
             className="pointer-events-none absolute left-0 top-0 h-full w-[60px] 
-          bg-gradient-to-r from-[#3f5f6b] to-transparent z-20 max-[413px]:hidden opacity-0 transition-opacity duration-300"
+          bg-gradient-to-r from-[#3f5f6b] to-transparent z-20 max-[413px]:w-[22px] max-[413px]:rounded-r-[22px] opacity-0 transition-opacity duration-300"
           />
 
           <button
@@ -221,10 +221,9 @@ export default function ServicesSection() {
             className="
             flex gap-6 overflow-x-auto no-scrollbar 
             px-[90px]
-            max-[1024px]:px-[60px]
             max-[768px]:px-10
-            max-[413px]:px-0
-            max-[413px]:gap-0
+            max-[413px]:px-6
+            max-[413px]:gap-6
           "
           >
             {[...services, ...services].map((item, index) => (
@@ -248,14 +247,10 @@ export default function ServicesSection() {
           min-w-[calc((100%-48px)/3)] h-[432px] 
           shadow-[0px_0px_19.22px_0px_#00000012]
         
-          max-[1201px]:h-[380px]
-          
-          max-[1024px]:min-w-[calc((100%-24px)/2)]
-          max-[1024px]:h-[360px]
-        
-          max-[413px]:min-w-full
-          max-[413px]:max-w-full
+          max-[413px]:min-w-[calc(100%-48px)]
+          max-[413px]:max-w-[calc(100%-48px)]
           max-[413px]:flex-none
+          max-[413px]:h-[420px]
         "
               >
                 <img

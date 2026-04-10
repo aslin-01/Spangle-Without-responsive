@@ -3,7 +3,7 @@ import { Send } from "lucide-react";
 
 export default function Footer() {
   return (
-    <footer className="bg-white px-18.75 pt-22.5 pt-[270px] pb-10 text-sm max-[413px]:px-4 max-[413px]:pt-10 max-[413px]:pt-[110px] max-[413px]:pb-6">
+    <footer className="bg-white px-18.75 pt-22.5 pt-[270px] pb-10 text-sm max-[413px]:px-4 max-[413px]:pt-10 max-[413px]:pt-[60px] max-[413px]:pb-6">
       <div className="grid md:grid-cols-3 gap-10 mb-20 max-[413px]:gap-6 max-[413px]:mb-4">
         {/* Left Section */}
         <div>

@@ -39,3 +39,9 @@ html {
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
+
+@media (max-width: 413px) {
+  .hero-spiral {
+    transform: scale(1.12) translateX(0%) !important;
+  }
+}

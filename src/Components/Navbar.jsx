@@ -16,7 +16,7 @@ export default function Navbar() {
   const location = useLocation();
 
   const linkBase =
-    "relative inline-flex items-center gap-1 text-[13px] font-bold tracking-[0.08em] text-[#212529D4] hover:text-[#212529] pb-7";
+    "relative inline-flex items-center gap-1 text-[13px] font-bold tracking-[0.08em] text-[#212529D4] hover:text-[#212529] pb-7 min-[1025px]:max-[1025px]:text-[12px] min-[1025px]:max-[1025px]:tracking-[0.05em] min-[1025px]:max-[1025px]:pb-6";
 
   const navLinkClass = useMemo(
     () =>
@@ -42,18 +42,18 @@ export default function Navbar() {
     <header className="fixed top-0 left-0 w-full z-[1000] bg-white">
       {/* Navbar */}
       <div className="w-full border-b-1 border-[#ebebeb]">
-       <div className="max-w-[1440px] px-[25px] h-[90px] grid grid-cols-[1fr_2fr_1fr] items-end">
+       <div className="max-w-[1440px] px-[25px] h-[90px] grid grid-cols-[1fr_2fr_1fr] items-end min-[1025px]:max-[1025px]:grid-cols-[180px_1fr_180px] min-[1025px]:max-[1025px]:px-[20px] max-[1025px]:h-[80px] max-[1025px]:grid-cols-[1fr_auto] max-[1025px]:items-center max-[1025px]:px-[20px] max-[413px]:h-[72px] max-[413px]:grid-cols-[1fr_auto] max-[413px]:items-center max-[413px]:px-[16px]">
           {/* Logo */}
-          <NavLink to="/" className="leading-none mb-6 flex items-center justify-self-start">
+          <NavLink to="/" className="leading-none mb-6 flex items-center justify-self-start min-[1025px]:max-[1025px]:mb-5 max-[1025px]:mb-0">
             <img
               src={logo}
               alt="Spangles Webx"
-              className="w-[200px] h-auto object-contain"
+              className="w-[200px] h-auto object-contain min-[1025px]:max-[1025px]:w-[170px] max-[1025px]:w-[170px] max-[413px]:w-[150px]"
             />
           </NavLink>
 
           {/* Desktop links */}
-          <ul className="hidden md:flex items-end justify-center gap-[40px] justify-self-center">
+          <ul className="hidden min-[1026px]:flex items-end justify-center gap-[40px] justify-self-center">
             {LINKS.map((l) => (
               <li key={l.to}>
                 <NavLink
@@ -80,7 +80,7 @@ export default function Navbar() {
 
           <NavLink
             to="/contact"
-            className="hidden md:inline-flex items-center mb-4 justify-center gap-3 rounded-[8px] bg-[#345261] pl-[26px] pr-[26px] py-[18px] text-[12px] leading-[18px] font-bold uppercase text-white font-montserrat justify-self-end"
+            className="hidden min-[1026px]:inline-flex items-center mb-4 justify-center gap-3 rounded-[8px] bg-[#345261] pl-[26px] pr-[26px] py-[18px] text-[12px] leading-[18px] font-bold uppercase text-white font-montserrat justify-self-end"
           >
             CONTACT US
             <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
@@ -96,7 +96,7 @@ export default function Navbar() {
 
           {/* Mobile toggle */}
           <button
-            className="md:hidden inline-flex items-center justify-center p-2 text-[#212529D4]"
+            className="hidden max-[1025px]:inline-flex items-center justify-center p-2 text-[#212529D4]"
             onClick={() => setOpen((v) => !v)}
           >
             {open ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
@@ -105,11 +105,11 @@ export default function Navbar() {
       </div>
 
       {/* 25px space */}
-      <div className="h-[25px]"></div>
+      <div className="h-[25px] max-[413px]:h-[16px]"></div>
 
       {/* Mobile menu */}
       {open && (
-        <div className="md:hidden bg-white border-t">
+        <div className="min-[1026px]:hidden bg-white border-t">
           <div className="px-4 py-4">
             <ul className="flex flex-col gap-4">
               {LINKS.map((l) => (
