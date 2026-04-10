@@ -133,79 +133,102 @@ export default function Navbar() {
       {/* 25px space */}
       <div className="h-[17px] max-[413px]:h-[13px]"></div>
 
-      {/* Mobile menu */}
+      {/* Mobile menu Drawer */}
       {open && (
-        <div className="min-[1026px]:hidden bg-white border-t max-h-[calc(100vh-100px)] overflow-y-auto">
-          <div className="px-4 py-4">
-            <ul className="flex flex-col gap-6">
-              {LINKS.map((l) => (
-                <li key={l.to}>
-                  <div
-                    className="flex items-center justify-between"
-                    onClick={() => {
-                      if (l.hasDropdown) {
-                        setServiceOpenMobile(!serviceOpenMobile);
-                      } else {
-                        setOpen(false);
-                      }
-                    }}
-                  >
-                    <NavLink
-                      to={l.to}
-                      end={l.end}
-                      onClick={(e) => {
-                        if (l.hasDropdown) {
-                          e.preventDefault();
-                          setServiceOpenMobile(!serviceOpenMobile);
-                        } else {
-                          setOpen(false);
+        <div className="fixed inset-0 z-[2000] flex justify-end min-[1026px]:hidden">
+          {/* Backdrop overlay */}
+          <div className="absolute inset-0 bg-black/30 backdrop-blur-sm" onClick={() => setOpen(false)}></div>
+
+          <div className="relative w-[320px] max-[413px]:w-[80%] bg-white h-full overflow-y-auto shadow-[-10px_0_30px_rgba(0,0,0,0.1)] flex flex-col pt-6 pb-12 transition-transform duration-300">
+            {/* Close button inside drawer */}
+            <div className="flex justify-end px-6 mb-6">
+              <button onClick={() => setOpen(false)} className="text-[#345261]">
+                <X className="h-7 w-7 stroke-[1.5]" />
+              </button>
+            </div>
+
+            <div className="px-[40px] flex-1 flex flex-col">
+              <ul className="flex flex-col gap-5">
+                {LINKS.map((l) => (
+                  <li key={l.to} className={l.hasDropdown ? "group" : ""}>
+                    <div className="flex items-center w-full">
+                      <NavLink
+                        to={l.to}
+                        end={l.end}
+                        onClick={() => setOpen(false)}
+                        className={({ isActive }) =>
+                          [
+                            "inline-flex items-center gap-1 text-[12px] font-bold tracking-[0.08em] text-[#212529D4] py-2",
+                            isActive ? "text-[#212529]" : "",
+                          ].join(" ")
                         }
-                      }}
-                      className={({ isActive }) =>
-                        [
-                          "inline-flex items-center gap-2 text-[12px] font-bold tracking-[0.08em] text-[#212529D4]",
-                          isActive ? "text-[#212529]" : "",
-                        ].join(" ")
-                      }
-                    >
-                      {l.label}
-                      {l.hasDropdown ? (
-                        <ChevronDown
-                          className={`h-4 w-4 transition-transform duration-300 ${
-                            serviceOpenMobile ? "rotate-180" : ""
+                      >
+                        {l.label}
+                      </NavLink>
+                      {l.hasDropdown && (
+                        <button
+                          onClick={(e) => {
+                            e.preventDefault();
+                            e.stopPropagation();
+                            setServiceOpenMobile(!serviceOpenMobile);
+                          }}
+                          className="p-2 ml-1 text-[#212529D4]"
+                          aria-label="Toggle dropdown"
+                        >
+                          <ChevronDown
+                            className={`h-4 w-4 transition-transform duration-300 ${serviceOpenMobile ? "rotate-180" : ""
+                              }`}
+                          />
+                        </button>
+                      )}
+                    </div>
+
+                    {l.hasDropdown && l.dropdown && (
+                      <ul
+                        className={`flex-col gap-4 pl-4 pt-2 ${serviceOpenMobile ? "flex" : "hidden"
                           }`}
-                        />
-                      ) : null}
-                    </NavLink>
-                  </div>
+                      >
+                        {l.dropdown.map((sub) => (
+                          <li key={sub.label}>
+                            <NavLink
+                              to={sub.to}
+                              state={sub.state}
+                              onClick={() => setOpen(false)}
+                              className="inline-flex items-center text-[14px] text-[#6b6b6b] hover:text-[#212529]"
+                            >
+                              {sub.label}
+                            </NavLink>
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+                  </li>
+                ))}
+              </ul>
 
-                  {l.hasDropdown && l.dropdown && serviceOpenMobile && (
-                    <ul className="flex flex-col gap-4 pl-4 pt-4">
-                      {l.dropdown.map((sub) => (
-                        <li key={sub.label}>
-                          <NavLink
-                            to={sub.to}
-                            state={sub.state}
-                            onClick={() => setOpen(false)}
-                            className="inline-flex items-center text-[14px] text-[#6b6b6b] hover:text-[#212529]"
-                          >
-                            {sub.label}
-                          </NavLink>
-                        </li>
-                      ))}
-                    </ul>
-                  )}
-                </li>
-              ))}
-            </ul>
-
-            <NavLink
-              to="/contact"
-              onClick={() => setOpen(false)}
-              className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-[8px] bg-[#345261] px-[22px] py-[12px] text-[11px] font-bold tracking-[0.08em] text-white"
-            >
-              CONTACT US <span className="text-[14px] leading-none">→</span>
-            </NavLink>
+              <div className="mt-auto pt-16">
+                <NavLink
+                  to="/contact"
+                  onClick={() => setOpen(false)}
+                  className="inline-flex w-full items-center justify-center gap-2 rounded-[8px] bg-[#345261] px-[22px] py-[16px] text-[12px] font-bold tracking-[0.08em] text-white"
+                >
+                  CONTACT US <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1 max-[413px]:w-[12px] max-[413px]:h-[12px]"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M5 12h14M13 5l7 7-7 7"
+                    />
+                  </svg>
+                </NavLink>
+              </div>
+            </div>
           </div>
         </div>
       )}

@@ -15,7 +15,8 @@ import bannerImg from "../../assets/portfolio-banner.jpg";
 
 export default function Portfolio() {
   const navigate = useNavigate();
-const [showAll, setShowAll] = useState(false);
+  const [showAll, setShowAll] = useState(false);
+  const [clickedCard, setClickedCard] = useState(null);
 const portfolio = [
   {
     id: 1,
@@ -70,7 +71,15 @@ const portfolio = [
 ];
 
   const goToDetails = (item) => {
-    navigate("/portfolio-details", { state: item });
+    if (window.innerWidth <= 1024) {
+      setClickedCard(item.id);
+      setTimeout(() => {
+        navigate("/portfolio-details", { state: item });
+        setClickedCard(null);
+      }, 350);
+    } else {
+      navigate("/portfolio-details", { state: item });
+    }
   };
 
 
@@ -118,7 +127,7 @@ const portfolio = [
               />
 
               {/* Overlay */}
-              <div className="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-all duration-300" />
+              <div className={`absolute inset-0 bg-black/30 transition-all duration-300 ${clickedCard === item.id ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'}`} />
 
               {/* Content */}
               <div className="absolute bottom-6 left-6 text-white max-[413px]:bottom-4 max-[413px]:left-4">
@@ -131,20 +140,19 @@ const portfolio = [
                 </p>
               </div>
 
-              {/* Arrow */}
               {/* Arrow Button */}
-              <div className="absolute top-5.5 right-5.5 w-[50px] h-[50px] bg-white rounded-full flex items-center justify-center shadow-md transition-all duration-300 group-hover:bg-[#345261] group-hover:scale-110 
-              max-[413px]:top-4 max-[413px]:right-4 max-[413px]:w-10 max-[413px]:h-10">
+              <div className={`absolute top-5.5 right-5.5 w-[50px] h-[50px] bg-white rounded-full flex items-center justify-center shadow-md transition-all duration-300 group-hover:bg-[#345261] group-hover:scale-110 
+              max-[413px]:top-4 max-[413px]:right-4 max-[413px]:w-10 max-[413px]:h-10 ${clickedCard === item.id ? 'bg-[#345261] scale-110' : ''}`}>
                 <ArrowRight
                   size={25}
-                  className="text-[#345261] transform rotate-[315deg] group-hover:rotate-[360deg] group-hover:text-white transition-all duration-300 max-[413px]:w-5 max-[413px]:h-5"
+                  className={`transform transition-all duration-300 max-[413px]:w-5 max-[413px]:h-5 group-hover:rotate-[360deg] group-hover:text-white ${clickedCard === item.id ? 'rotate-[360deg] text-white' : 'rotate-[315deg] text-[#345261]'}`}
                 />
               </div>
             </div>
           ))}
         </div>
 
-        <div className="text-center max-[413px]:mt-6">
+        <div className="text-center max-[413px]:my-6">
          {/* <button
   onClick={() => setShowAll(true)}
   className="font-montserrat font-bold text-[14px] leading-[21px] tracking-[2.24px] uppercase text-[#395563] flex items-center gap-2 mx-auto"
