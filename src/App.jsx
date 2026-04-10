@@ -19,7 +19,7 @@ function App() {
       <Navbar />
       <main
         key={pathname}
-        className="animate-fade-in pt-[115px] max-[413px]:pt-[88px]"
+        className="animate-fade-in pt-[97px] max-[413px]:pt-[85px]"
       >
         <Routes>
           <Route path="/" element={<Home />} />

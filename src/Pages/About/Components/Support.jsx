@@ -5,19 +5,19 @@ import {
   FaLinkedinIn,
   FaYoutube,
 } from "react-icons/fa";
-import logo from "../../../assets/logo.png";
+import logo from "../../../assets/webx-nav-Logo_03.jpg"; // Make sure to have this image in your assets folder
 
 export default function SupportBar() {
   return (
     <div className="px-[75px] mb-1  max-[1024px]:px-6 max-[768px]:px-4 max-[413px]:px-0 max-[413px]:flex max-[413px]:justify-center">
-      <div className="bg-white rounded-[14px] shadow-[0px_0px_20px_2px_#00000012] px-[75px] pt-[37px] pb-[45px] flex items-start justify-between max-[1200px]:flex-wrap max-[1024px]:justify-center max-[1200px]:gap-x-12 max-[1200px]:gap-y-10 max-[1024px]:px-6 max-[768px]:px-4 max-[413px]:px-[28px] max-[413px]:flex-col max-[413px]:gap-[25px] max-[413px]:max-w-[360px] max-[413px]:w-full">
+   <div className="bg-white rounded-[14px] shadow-[0px_0px_20px_2px_#00000012] px-[75px] pt-[37px] pb-[45px] flex items-center justify-between max-[1200px]:flex-wrap max-[1024px]:justify-center max-[1200px]:gap-x-12 max-[1200px]:gap-y-10 max-[1024px]:px-6 max-[768px]:px-4 max-[413px]:px-[28px] max-[413px]:flex-col max-[413px]:gap-[25px] max-[413px]:max-w-[360px] max-[413px]:w-full">
         {/* Logo */}
 
-        <div className="flex items-center max-[1200px]:w-full max-[1200px]:justify-center max-[413px]:self-center">
+        <div className="flex items-center justify-center max-[1200px]:w-full max-[1200px]:justify-center max-[413px]:justify-start max-[413px]:items-center">
           <img
             src={logo}
             alt="Spanglez Webx"
-            className="h-[50px] w-auto object-contain max-[413px]:h-[46px]"
+            className="h-[50px] w-[200px] object-contain max-[413px]:h-[46px]"
           />
         </div>
 
@@ -33,14 +33,14 @@ export default function SupportBar() {
             href="tel:180012345678"
             className="block mt-1 font-montserrat font-normal text-[16px] leading-[36px] tracking-[0] align-middle uppercase text-[#EE6196] max-[413px]:text-[14px] max-[413px]:leading-[26px]"
           >
-            1800 - 123 456 78
+            +91 7708784111
           </a>
           <a
             href="mailto:allan@spangles.com"
             className="font-montserrat font-normal text-[16px] leading-[18px] tracking-[0] 
   align-middle underline text-[#6B6A66] max-[413px]:text-[14px]"
           >
-            allan@spangles.com
+            webxspangles@gmail.com
           </a>
         </div>
 
@@ -53,9 +53,9 @@ export default function SupportBar() {
             ADDRESS
           </p>
           <p className="mt-1 font-montserrat font-normal text-[16px] leading-[24px] tracking-[0] align-middle text-[#6B6A66] max-[413px]:text-[14px] max-[413px]:leading-[20px]">
-            389, Joe Daniel st, Near palpannai,
+            7-15C, 1st Floor, Puthuval Vilai, Kattathurai,
             <br />
-            Nagercoil, KK District - 629003
+            Kattathurai POST, Tamil Nadu - 629158
           </p>
         </div>
 
@@ -70,33 +70,23 @@ export default function SupportBar() {
 
           <div className="flex max-[1200px]:justify-center max-[413px]:gap-[12px]">
             <div className="p-[10px] rounded-[10px] cursor-pointer max-[413px]:p-[9px]">
-              <FaFacebookF
-                className="text-[#345261] text-[18px] hover:text-[#345261] transition max-[413px]:text-[14px]"
-              />
+              <FaFacebookF className="text-[#345261] text-[18px] hover:text-[#345261] transition max-[413px]:text-[14px]" />
             </div>
 
             <div className="p-[10px] rounded-[10px] cursor-pointer max-[413px]:p-[9px]">
-              <FaTwitter
-                className="text-[#B3BDD1] text-[18px] hover:text-[#345261] transition max-[413px]:text-[14px]"
-              />
+              <FaTwitter className="text-[#B3BDD1] text-[18px] hover:text-[#345261] transition max-[413px]:text-[14px]" />
             </div>
 
             <div className=" p-[10px] rounded-[10px] cursor-pointer max-[413px]:p-[9px]">
-              <FaLinkedinIn
-                className="text-[#B3BDD1] text-[18px] hover:text-[#345261] transition max-[413px]:text-[14px]"
-              />
+              <FaLinkedinIn className="text-[#B3BDD1] text-[18px] hover:text-[#345261] transition max-[413px]:text-[14px]" />
             </div>
 
             <div className=" p-[10px] rounded-[10px] cursor-pointer max-[413px]:p-[9px]">
-              <FaInstagram
-                className="text-[#B3BDD1] text-[18px] hover:text-[#345261] transition max-[413px]:text-[14px]"
-              />
+              <FaInstagram className="text-[#B3BDD1] text-[18px] hover:text-[#345261] transition max-[413px]:text-[14px]" />
             </div>
 
             <div className=" p-[10px] rounded-[10px] cursor-pointer max-[413px]:p-[9px]">
-              <FaYoutube
-                className="text-[#B3BDD1] text-[18px] hover:text-[#345261] transition max-[413px]:text-[14px]"
-              />
+              <FaYoutube className="text-[#B3BDD1] text-[18px] hover:text-[#345261] transition max-[413px]:text-[14px]" />
             </div>
           </div>
         </div>

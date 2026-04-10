@@ -99,7 +99,8 @@ export default function ServicesSection() {
       <div
         className="
           relative pt-[60px] pb-[100px] bg-[#3f5f6b]
-          max-[768px]:py-10
+          max-[1025px]:pb-[120px]
+          max-[768px]:pt-10 max-[768px]:pb-[120px]
           max-[413px]:pt-[35px] max-[413px]:pb-[120px]
         "
       >
@@ -111,7 +112,7 @@ export default function ServicesSection() {
     max-[413px]:py-6
   "
         >
-          <div className="flex justify-between items-end gap-10 flex-wrap max-[413px]:flex-col max-[413px]:items-start max-[413px]:gap-6">
+          <div className="flex justify-between items-end gap-10 flex-wrap max-[1025px]:flex-nowrap max-[768px]:flex-wrap max-[413px]:flex-col max-[413px]:items-start max-[413px]:gap-6">
             {/* LEFT */}
             <div>
               <p className="font-montserrat font-bold text-[14px] leading-[21px] tracking-[2.24px] uppercase text-white/70 mb-4">
@@ -124,7 +125,7 @@ export default function ServicesSection() {
               </h2>
             </div>
 
-            <div className="max-w-[600px] w-full flex justify-between items-end gap-10 max-[413px]:flex-col max-[413px]:items-start max-[413px]:gap-5">
+            <div className="max-w-[600px] w-full flex justify-between items-end gap-10 max-[1025px]:w-auto max-[413px]:flex-col max-[413px]:items-start max-[413px]:gap-5">
               {/* DESCRIPTION (LEFT) */}
               <p className="font-montserrat font-normal text-[16px] leading-[24px] text-white max-w-[360px] max-[413px]:text-[14px] max-[413px]:leading-[20px] max-[413px]:max-w-full">
                 Spangles Webx is a tech-driven company passionate about
@@ -133,7 +134,7 @@ export default function ServicesSection() {
               </p>
 
               {/* BUTTON (RIGHT) */}
-              <button className="font-montserrat font-bold text-[12px] leading-[18px] uppercase text-[#395563] bg-white px-[25px] py-[16px] rounded-lg flex items-center gap-2 whitespace-nowrap max-[413px]:absolute max-[413px]:left-6 max-[413px]:bottom-8">
+              <button className="font-montserrat font-bold text-[12px] leading-[18px] uppercase text-[#395563] bg-white px-[25px] py-[16px] rounded-lg flex items-center gap-2 whitespace-nowrap max-[1025px]:absolute max-[1025px]:bottom-12 max-[1025px]:left-1/2 max-[1025px]:-translate-x-1/2 max-[768px]:left-10 max-[768px]:translate-x-0 max-[413px]:absolute max-[413px]:left-6 max-[413px]:bottom-8">
                 ALL SERVICES
                 <svg
                   xmlns="http://www.w3.org/2000/svg"

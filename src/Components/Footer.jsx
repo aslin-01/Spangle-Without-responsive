@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { Send } from "lucide-react";
+import logo from "../assets/Webx-nav-Logo_03.jpg"; // Make sure to have this image in your assets folder
 
 export default function Footer() {
   return (
@@ -7,9 +8,13 @@ export default function Footer() {
       <div className="grid md:grid-cols-3 gap-10 mb-20 max-[413px]:gap-6 max-[413px]:mb-4">
         {/* Left Section */}
         <div>
-          <h2 className="font-bold tracking-widest text-gray-700 mb-4 max-[413px]:mb-3">
-            SPANGLEZ WEBX
-          </h2>
+          <Link to="/">
+            <img
+              src={logo}
+              alt="Spanglez Webx"
+              className="h-[40px] w-auto object-contain mb-4 max-[413px]:h-[36px] max-[413px]:mb-3"
+            />
+          </Link>
           <p className="font-montserrat text-[16px] leading-[24px] text-[#6B6A66] max-w-xs">
             We are the best world Information Technology Company. Providing the
             highest quality in hardware, Software & Network solutions.
@@ -75,31 +80,29 @@ export default function Footer() {
       </div>
 
       {/* Bottom Section */}
- <div className="flex flex-col md:flex-row justify-between items-center py-10 text-gray-400 text-xs max-[413px]:py-6 max-[413px]:gap-2 max-[413px]:text-center">
-  
-  <p className="font-montserrat text-[16px] leading-[24px] text-[#6B6A66] max-[413px]:text-[14px] max-[413px]:leading-[20px] max-[413px]:order-2">
-    Copyright © 2021 Spangles Webx. All Rights Reserved.
-  </p>
+      <div className="flex flex-col md:flex-row justify-between items-center py-10 text-gray-400 text-xs max-[413px]:py-6 max-[413px]:gap-2 max-[413px]:text-center">
+        <p className="font-montserrat text-[16px] leading-[24px] text-[#6B6A66] max-[413px]:text-[14px] max-[413px]:leading-[20px] max-[413px]:order-2">
+          Copyright © 2021 Spangles Webx. All Rights Reserved.
+        </p>
 
-  <div className="flex gap-4 mt-3 md:mt-0 max-[413px]:flex-col max-[413px]:gap-2 max-[413px]:order-1 max-[413px]:items-center">
-    <div className="flex gap-4 max-[413px]:gap-2">
-      <Link
-        to="/privacy"
-        className="font-montserrat font-semibold text-[16px] leading-[100%] text-[#00000078]"
-      >
-        Privacy Policy
-      </Link>
-      <span>|</span>
-      <Link
-        to="/terms"
-        className="font-montserrat font-semibold text-[16px] leading-[100%] text-[#00000078]"
-      >
-        Terms & Conditions
-      </Link>
-    </div>
-  </div>
-
-</div>
+        <div className="flex gap-4 mt-3 md:mt-0 max-[413px]:flex-col max-[413px]:gap-2 max-[413px]:order-1 max-[413px]:items-center">
+          <div className="flex gap-4 max-[413px]:gap-2">
+            <Link
+              to="/privacy"
+              className="font-montserrat font-semibold text-[16px] leading-[100%] text-[#00000078]"
+            >
+              Privacy Policy
+            </Link>
+            <span>|</span>
+            <Link
+              to="/terms"
+              className="font-montserrat font-semibold text-[16px] leading-[100%] text-[#00000078]"
+            >
+              Terms & Conditions
+            </Link>
+          </div>
+        </div>
+      </div>
     </footer>
   );
 }
