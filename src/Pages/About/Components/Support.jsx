@@ -5,7 +5,7 @@ import {
   FaLinkedinIn,
   FaYoutube,
 } from "react-icons/fa";
-import logo from "../../../assets/webx-nav-Logo_03.jpg"; // Make sure to have this image in your assets folder
+import logo from "../../../assets/Webx-nav-Logo_03.jpg"; // Make sure to have this image in your assets folder
 
 export default function SupportBar() {
   return (

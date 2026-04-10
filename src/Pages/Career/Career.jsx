@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import successImg from "../../assets/success.png"; // change to your success image
+import successImg from "../../assets/Success.png"; // change to your success image
 import { Calendar, Clock, MapPin } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import carrerImg from "../../assets/portfolio7.jpg"; // change to your careers image

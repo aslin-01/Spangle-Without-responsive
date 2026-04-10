@@ -88,9 +88,9 @@ import {
   FaYoutube,
 } from "react-icons/fa";
 
-import team1 from "../../../assets/team1.jpg";
-import team2 from "../../../assets/team2.jpg";
-import team3 from "../../../assets/team3.jpg";
+import team1 from "../../../assets/Team1.jpg";
+import team2 from "../../../assets/Team2.jpg";
+import team3 from "../../../assets/Team3.jpg";
 
 const team = [
   {

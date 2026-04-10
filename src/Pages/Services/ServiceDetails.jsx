@@ -4,7 +4,7 @@ import { useLocation } from "react-router-dom";
 import Support from "../About/Components/Support";
 import { services } from "./Services";
 import { useRef, useEffect } from "react";
-import Serviceicon from "../../assets/service-icon.png"; // ✅ ADD THIS
+import Serviceicon from "../../assets/Service-icon.png"; // ✅ ADD THIS
 // fallback images (reuse yours)
 import img1 from "../../assets/portfolio1.jpg";
 import img2 from "../../assets/portfolio2.jpg";

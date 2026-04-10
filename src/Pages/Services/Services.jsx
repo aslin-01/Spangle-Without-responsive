@@ -8,7 +8,7 @@ import testingImg from "../../assets/portfolio5.jpg";
 import appImg from "../../assets/portfolio6.jpg";
 import Support from "../About/Components/Support";
 import { useNavigate } from "react-router-dom";
-import Serviceicon from "../../assets/service-icon.png"; // change to your icon
+import Serviceicon from "../../assets/Service-icon.png"; // change to your icon
 
 
 export const services = [
