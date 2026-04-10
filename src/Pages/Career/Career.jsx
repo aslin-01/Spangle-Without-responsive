@@ -42,7 +42,7 @@ const Modal = ({ children, onClose }) => {
   return (
     <AnimatePresence>
       <motion.div
-        className="fixed inset-0 bg-black/60 flex justify-center items-start z-[1000] overflow-y-auto pt-[165px] pb-10 max-[768px]:pt-[100px] max-[413px]:pt-[50vh] max-[413px]:pb-0 max-[413px]:items-end"
+        className="fixed inset-0 bg-black/60 flex justify-center items-start z-[1000] overflow-y-auto pt-[165px] pb-10 max-[768px]:pt-[100px] max-[413px]:pt-[20vh] max-[413px]:pb-0 max-[413px]:items-end"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
