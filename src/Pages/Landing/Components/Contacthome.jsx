@@ -102,7 +102,7 @@ export default function ContactSection() {
           <img
             src={formcont}
             alt="contact"
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover max-[413px]:rounded-[10px]"
           />
         </div>
 

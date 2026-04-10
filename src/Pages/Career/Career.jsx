@@ -336,7 +336,7 @@ export default function Career() {
       {/* Details Modal */}
       {showDetails && (
         <Modal onClose={() => setShowDetails(false)}>
-          <h2 className=" w-[65%] font-[Montserrat] font-medium text-[60px] leading-[60px] tracking-[-1px] text-[#345261] mb-5 max-[1025px]:w-[80%] max-[1025px]:text-[48px] max-[768px]:w-full max-[768px]:text-[40px] max-[768px]:leading-[48px] max-[413px]:text-[20px] max-[413px]:leading-[28px] max-[413px]:tracking-[-0.02em] max-[413px]:mb-[20px] max-[413px]:pr-[30px] max-[413px]:w-full">
+          <h2 className=" w-[65%] font-[Montserrat] font-medium text-[50px] leading-[60px] tracking-[-1px] text-[#345261] mb-5 max-[1025px]:w-[80%] max-[1025px]:text-[48px] max-[768px]:w-full max-[768px]:text-[40px] max-[768px]:leading-[48px] max-[413px]:text-[20px] max-[413px]:leading-[28px] max-[413px]:tracking-[-0.02em] max-[413px]:mb-[20px] max-[413px]:pr-[30px] max-[413px]:w-full">
             {selectedJob?.title}
           </h2>
           <div className="flex gap-10 max-[768px]:flex-col max-[413px]:flex-col max-[413px]:gap-[20px]">

@@ -37,19 +37,25 @@ focus:border-[#2f4858]`;
   return (
     <div>
       {/* Contact Cards Section */}
-      <div className="mx-[20px] sm:mx-[40px] md:mx-[67px] xl:mx-[67px] max-w-[1306px] pt-25 pb-20 text-center bg-[#ffffff] 
-      max-[768px]:pt-12 max-[768px]:pb-10 max-[413px]:pt-10 max-[413px]:pb-5 max-[413px]:mx-4">
+      <div
+        className="mx-[20px] sm:mx-[40px] md:mx-[67px] xl:mx-[67px] max-w-[1306px] pt-25 pb-20 text-center bg-[#ffffff] 
+      max-[768px]:pt-12 max-[768px]:pb-10 max-[413px]:pt-10 max-[413px]:pb-5 max-[413px]:mx-4"
+      >
         <div className="w-[520px] mx-auto text-center max-[768px]:w-full">
           <p className="text-[14px] font-bold tracking-[1.43px] leading-[100%] text-[#395563] uppercase text-center mb-2 max-[768px]:text-[13px] max-[413px]:text-[12px]">
             CONTACT US
           </p>
-          <h2 className="font-montserrat text-[32px] leading-[42.3px] tracking-[-1.06px] text-[#161C2D] font-semibold max-w-[460px] mx-auto text-center mb-4 
-          max-[768px]:text-[28px] max-[768px]:leading-[36px] max-[413px]:text-[24px] max-[413px]:leading-[32px] max-[413px]:max-w-full">
+          <h2
+            className="font-montserrat text-[32px] leading-[42.3px] tracking-[-1.06px] text-[#161C2D] font-semibold max-w-[460px] mx-auto text-center mb-4 
+          max-[768px]:text-[28px] max-[768px]:leading-[36px] max-[413px]:text-[24px] max-[413px]:leading-[32px] max-[413px]:max-w-full"
+          >
             Have questions or need support?
           </h2>
 
-          <p className="font-montserrat text-[16px] leading-[22.5px] text-[#6B6A66] mb-20 max-w-[520px] mx-auto 
-          max-[768px]:mb-12 max-[768px]:text-[15px] max-[413px]:mb-10 max-[413px]:text-[14px] max-[413px]:leading-[20px]">
+          <p
+            className="font-montserrat text-[16px] leading-[22.5px] text-[#6B6A66] mb-20 max-w-[520px] mx-auto 
+          max-[768px]:mb-12 max-[768px]:text-[15px] max-[413px]:mb-10 max-[413px]:text-[14px] max-[413px]:leading-[20px]"
+          >
             Spangles Webx Private Limited offers tailored solutions in Web
             Development, UI/UX Design.
           </p>
@@ -58,18 +64,19 @@ focus:border-[#2f4858]`;
         <div className="grid md:grid-cols-3 gap-6 text-left">
           {/* Card */}
           <div className="group bg-white px-7 py-5 rounded-xl border border-gray-200  transition-all duration-300 hover:-translate-y-1 hover:shadow-md text-left">
-          <div className="w-[76px] h-[76px] mb-6.5 flex items-center justify-center 
-rounded-lg bg-gray-100 group-hover:bg-[#2f4858] transition-all duration-300">
-  
-<img
-  src={phoneIcon}
-  alt="phone"
-  className="w-[36px] h-[36px] object-contain 
+            <div
+              className="w-[76px] h-[76px] mb-6.5 flex items-center justify-center 
+rounded-lg bg-gray-100 group-hover:bg-[#2f4858] transition-all duration-300"
+            >
+              <img
+                src={phoneIcon}
+                alt="phone"
+                className="w-[36px] h-[36px] object-contain 
   transition-all duration-300
   [filter:brightness(0)_saturate(100%)_invert(27%)_sepia(17%)_saturate(748%)_hue-rotate(155deg)_brightness(94%)_contrast(90%)]
   group-hover:brightness-0 group-hover:invert"
-/>
-</div>
+              />
+            </div>
 
             <h3 className=" font-montserrat text-[18px] leading-[28.2px] tracking-[-0.44px] text-[#161C2D] font-bold">
               Call us
@@ -84,13 +91,13 @@ rounded-lg bg-gray-100 group-hover:bg-[#2f4858] transition-all duration-300">
           <div className="group bg-white px-7 py-5 rounded-xl border border-gray-200  transition-all duration-300 hover:-translate-y-1 hover:shadow-md">
             <div className="w-[76px] h-[76px] mb-6.5  flex items-center justify-center rounded-lg bg-gray-100 text-gray-600 group-hover:bg-[#2f4858] group-hover:text-white transition-all duration-300">
               <img
-  src={mailIcon}
-  alt="email"
-  className="w-[36px] h-[36px] object-contain 
+                src={mailIcon}
+                alt="email"
+                className="w-[36px] h-[36px] object-contain 
   transition-all duration-300
   [filter:brightness(0)_saturate(100%)_invert(27%)_sepia(17%)_saturate(748%)_hue-rotate(155deg)_brightness(94%)_contrast(90%)]
   group-hover:brightness-0 group-hover:invert"
-/>
+              />
             </div>
 
             <h3 className=" font-montserrat text-[18px] leading-[28.2px] tracking-[-0.44px] text-[#161C2D] font-bold">
@@ -105,14 +112,14 @@ rounded-lg bg-gray-100 group-hover:bg-[#2f4858] transition-all duration-300">
           {/* Card */}
           <div className="group bg-white px-7 py-5 rounded-xl border border-gray-200  transition-all duration-300 hover:-translate-y-1 hover:shadow-md">
             <div className="w-[76px] h-[76px] mb-6.5  flex items-center justify-center rounded-lg bg-gray-100 text-gray-600 group-hover:bg-[#2f4858] group-hover:text-white transition-all duration-300">
-             <img
-   src={chatIcon}
-  alt="chat"
-className="w-[36px] h-[36px] object-contain 
+              <img
+                src={chatIcon}
+                alt="chat"
+                className="w-[36px] h-[36px] object-contain 
   transition-all duration-300
   [filter:brightness(0)_saturate(100%)_invert(27%)_sepia(17%)_saturate(748%)_hue-rotate(155deg)_brightness(94%)_contrast(90%)]
   group-hover:brightness-0 group-hover:invert"
-/>
+              />
             </div>
 
             <h3 className=" font-montserrat text-[18px] leading-[28.2px] tracking-[-0.44px] text-[#161C2D] font-bold">
@@ -202,30 +209,33 @@ className="w-[36px] h-[36px] object-contain
                 <p className="text-red-500 text-sm mt-1">{errors.message}</p>
               )}
             </div>
-<button
-  onClick={validate}
-  className="group bg-[#395563] border border-[#5E6FB5]
+            <button
+              onClick={validate}
+              className="group bg-[#395563] border border-[#5E6FB5]
   px-[35px] py-[20px] rounded-[10px]
   text-white uppercase
   font-montserrat font-bold text-[12px] leading-[18px]
   flex items-center justify-center gap-2
   max-[480px]:w-full max-[480px]:py-4
   mb-0 max-[413px]:mb-[35px]"
->
-  SEND MESSAGE
-  <ArrowRight
-    size={14}
-    className="transition-transform duration-300 group-hover:translate-x-1"
-  />
-</button>
+            >
+              SEND MESSAGE
+              <ArrowRight
+                size={14}
+                className="transition-transform duration-300 group-hover:translate-x-1"
+              />
+            </button>
           </div>
 
           {/* Right Section - Map */}
-          <div className="hidden md:block w-full h-full">
+          <div className="w-full h-[400px] md:h-full">
             <iframe
               title="map"
-              src="https://maps.google.com/maps?q=London&t=&z=10&ie=UTF8&iwloc=&output=embed"
-              className="w-full h-full rounded-lg "
+              src="https://maps.google.com/maps?q=SPANGLES%20WEBX%208.2824082%2C77.2731045&z=17&output=embed"
+              className="w-full h-full rounded-lg"
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              allowFullScreen
             />
           </div>
         </div>
