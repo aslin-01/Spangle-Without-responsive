@@ -568,7 +568,7 @@ export default function Career() {
       {/* Success Modal */}
    {showSuccess && (
   <Modal onClose={() => setShowSuccess(false)}>
-    <div className="flex flex-col items-center justify-center text-center px-4 sm:px-6 md:px-8">
+    <div className="flex flex-col items-center justify-center text-center px-4 sm:px-6 md:px-8 max-[413px]:absolute max-[413px]:top-1/2 max-[413px]:left-1/2 max-[413px]:-translate-x-1/2 max-[413px]:-translate-y-1/2 max-[413px]:w-full">
       
       <img
         src={successImg}
@@ -577,7 +577,7 @@ export default function Career() {
           w-full max-w-[250px] 
           sm:max-w-[300px] 
           md:max-w-[350px] 
-          h-auto object-contain mb-4
+          h-auto object-contain mb-4 max-[413px]:mx-auto
         "
       />
 
@@ -585,7 +585,7 @@ export default function Career() {
         font-[Montserrat] font-semibold 
         text-[18px] sm:text-[22px] md:text-[26px] 
         leading-tight 
-        text-[#345261]
+        text-[#345261] max-[413px]:text-center max-[413px]:mx-auto max-[413px]:w-full
       ">
         Application Submitted Successfully
       </h3>
