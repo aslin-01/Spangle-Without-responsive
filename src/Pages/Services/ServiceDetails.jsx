@@ -219,18 +219,15 @@ const ServiceDetails = () => {
         </div>
       </div>
 
-      {/* VIEW ALL SERVICES SLIDER */}
       <div
         className="
-  px-[90px] pt-[65px] pb-[140px] bg-[#F7F9FB]
+  px-[90px] pt-[65px] pb-[140px] bg-[#F7F9FB] max-[413px]:relative
   max-[1024px]:px-[60px] max-[1024px]:pb-[100px]
   max-[768px]:px-10 max-[768px]:py-10
-  max-[413px]:px-6 max-[413px]:pt-6 max-[413px]:pb-20
+  max-[413px]:px-6 max-[413px]:pt-6 max-[413px]:pb-[120px] max-[413px]:mb-[80px]
 "
       >
       
-
-
 
         <div className="
   flex justify-between items-center mb-[40px]
@@ -258,6 +255,7 @@ const ServiceDetails = () => {
     max-[1025px]:px-[20px] max-[1025px]:py-[12px]
 
     max-[413px]:px-[16px] max-[413px]:py-[10px] max-[413px]:text-[11px]
+    max-[413px]:absolute max-[413px]:bottom-10 max-[413px]:left-1/2 max-[413px]:-translate-x-1/2 max-[413px]:w-max
   ">
             All Services
 
