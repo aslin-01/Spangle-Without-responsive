@@ -79,7 +79,7 @@ export default function Navbar() {
                   }
                 >
                   {l.label}
-                  {l.hasDropdown ? <ChevronDown className="h-3 w-3 transition-transform duration-300 group-hover:rotate-180" /> : null}
+                  {l.hasDropdown ? <ChevronDown className="h-5 w-5 text-bold transition-transform duration-300 group-hover:rotate-180" /> : null}
                 </NavLink>
 
                 {l.hasDropdown && l.dropdown && (
