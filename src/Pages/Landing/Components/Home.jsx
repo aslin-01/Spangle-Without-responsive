@@ -8,7 +8,7 @@ export default function HeroSection() {
     <div className="overflow-x-clip">
       <section className="relative bg-[#ffffff] pt-30 pb-60 max-[1201px]:pb-52 max-[1024px]:pb-48 max-[413px]:pt-25 max-[413px]:pb-[220px]">
         {/* TOP LEFT THICK ARC — same size/stroke as desktop, visible on ≤413px too */}
-        <div className="absolute -top-[250px] -left-[250px] z-0 h-[500px] w-[500px] rounded-full border-[60px] border-gray-50"></div>
+        <div className="absolute -top-[370px] -left-[350px] z-0 h-[620px] w-[620px] rounded-full border-[60px] border-gray-50"></div>
 
         {/* THIN GREY LINE (LARGE CIRCLE) */}
         <svg

@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { NavLink, useLocation } from "react-router-dom";
 import { ChevronDown, Menu, X } from "lucide-react";
 import logo from "../assets/Webx-nav-Logo_03.jpg"; // Make sure to have this image in your assets folder
@@ -26,6 +26,19 @@ export default function Navbar() {
   const [open, setOpen] = useState(false);
   const [serviceOpenMobile, setServiceOpenMobile] = useState(false);
   const location = useLocation();
+  const [isScrolled, setIsScrolled] = useState(false);
+  const isLandingPage = location.pathname === "/";
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 8);
+    };
+
+    handleScroll();
+    window.addEventListener("scroll", handleScroll);
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [location.pathname]);
 
   const linkBase =
     "relative inline-flex items-center gap-1 text-[13px] font-bold tracking-[0.08em] text-[#212529D4] hover:text-[#212529] pb-7 min-[1025px]:max-[1025px]:text-[12px] min-[1025px]:max-[1025px]:tracking-[0.05em] min-[1025px]:max-[1025px]:pb-6";
@@ -51,7 +64,11 @@ export default function Navbar() {
   );
 
   return (
-    <header className="fixed top-0 left-0 w-full z-[1000] bg-white">
+    <header
+      className={`fixed top-0 left-0 w-full z-[1000] transition-colors duration-300 ${
+        isLandingPage && !isScrolled ? "bg-transparent" : "bg-white"
+      }`}
+    >
       {/* Navbar */}
       <div className="w-full border-b-1 border-[#ebebeb]">
         <div className="max-w-[1440px] px-[25px] h-[80px] grid grid-cols-[1fr_2fr_1fr] items-end min-[1025px]:max-[1025px]:grid-cols-[180px_1fr_180px] min-[1025px]:max-[1025px]:px-[20px] max-[1025px]:h-[80px] max-[1025px]:grid-cols-[1fr_auto] max-[1025px]:items-center max-[1025px]:px-[20px] max-[413px]:h-[72px] max-[413px]:grid-cols-[1fr_auto] max-[413px]:items-center max-[413px]:px-[16px]">
