@@ -109,7 +109,7 @@ export default function ContactSection() {
         {/* RIGHT FORM */}
         <div className="md:w-[55%] w-full py-20 pr-15 md:py-20 relative max-[413px]:py-10 max-[413px]:px-0">
           {/* subtle background pattern */}
-          <div className="absolute inset-0 opacity-[0.05] bg-[url('/pattern.png')] bg-cover bg-right pointer-events-none max-[413px]:hidden"></div>
+          <div className="absolute inset-0 opacity-[0.05] bg-cover bg-right pointer-events-none max-[413px]:hidden"></div>
 
           <form className="relative z-10" onSubmit={handleSubmit} noValidate>
             {/* Row 1 */}
