@@ -225,6 +225,7 @@ export default function ServicesSection() {
             max-[768px]:px-10
             max-[413px]:px-6
             max-[413px]:gap-6
+            snap-x snap-mandatory scroll-px-[90px] max-[768px]:scroll-px-10 max-[413px]:scroll-px-6
           "
           >
             {[...services, ...services].map((item, index) => (
@@ -247,9 +248,10 @@ export default function ServicesSection() {
           relative group cursor-pointer rounded-xl overflow-hidden 
           min-w-[calc((100%-48px)/3)] h-[432px] 
           shadow-[0px_0px_19.22px_0px_#00000012]
+          snap-start
         
-          max-[413px]:min-w-[calc(100%-48px)]
-          max-[413px]:max-w-[calc(100%-48px)]
+          max-[413px]:min-w-[calc(100%-60px)]
+          max-[413px]:max-w-[calc(100%-60px)]
           max-[413px]:flex-none
           max-[413px]:h-[420px]
         "

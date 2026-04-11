@@ -8,6 +8,8 @@ import Portfolio from "./Pages/Portfolio/Portfolio";
 import PortfolioDetails from "./Pages/Portfolio/PortfolioDetails";
 import Career from "./Pages/Career/Career";
 import Contact from "./Pages/Contact/Contact";
+import Blog from "./Pages/Blog/Blog";
+import Gallery from "./Pages/Gallery/Gallery";
 import ScrollToTop from "./Components/ScrollToTop";
 import ServiceDetails from "./Pages/Services/ServiceDetails";
 function App() {
@@ -30,6 +32,8 @@ function App() {
           <Route path="/service-details" element={<ServiceDetails />} />
           <Route path="/career" element={<Career />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/blog" element={<Blog />} />
+          <Route path="/gallery" element={<Gallery />} />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </main>

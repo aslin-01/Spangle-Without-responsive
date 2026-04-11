@@ -19,6 +19,8 @@ const LINKS = [
     })),
   },
   { to: "/portfolio", label: "PORTFOLIO" },
+  { to: "/gallery", label: "GALLERY" },
+  { to: "/blog", label: "BLOG" },
   { to: "/career", label: "CAREER" },
 ];
 
@@ -41,7 +43,7 @@ export default function Navbar() {
   }, [location.pathname]);
 
   const linkBase =
-    "relative inline-flex items-center gap-1 text-[13px] font-bold tracking-[0.08em] text-[#212529D4] hover:text-[#212529] pb-7 min-[1025px]:max-[1025px]:text-[12px] min-[1025px]:max-[1025px]:tracking-[0.05em] min-[1025px]:max-[1025px]:pb-6";
+    "relative inline-flex items-center gap-1 whitespace-nowrap text-[13px] font-bold tracking-[0.08em] text-[#212529D4] hover:text-[#212529] pb-7 min-[1025px]:max-[1025px]:text-[12px] min-[1025px]:max-[1025px]:tracking-[0.05em] min-[1025px]:max-[1025px]:pb-6";
 
   const navLinkClass = useMemo(
     () =>
@@ -175,7 +177,7 @@ export default function Navbar() {
                         onClick={() => setOpen(false)}
                         className={({ isActive }) =>
                           [
-                            "inline-flex items-center gap-1 text-[12px] font-bold tracking-[0.08em] text-[#212529D4] py-2",
+                            "inline-flex items-center gap-1 whitespace-nowrap text-[12px] font-bold tracking-[0.08em] text-[#212529D4] py-2",
                             isActive ? "text-[#212529]" : "",
                           ].join(" ")
                         }

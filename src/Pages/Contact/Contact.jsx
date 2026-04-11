@@ -83,7 +83,7 @@ rounded-lg bg-gray-100 group-hover:bg-[#2f4858] transition-all duration-300"
             </h3>
 
             <p className="mt-2 font-montserrat text-[14px] leading-[25.56px] tracking-[-0.18px] text-[#161C2D]">
-              Call us 91 8292829299 for any support and enquiries.
+              Call us +91 7708784111 for any support and enquiries.
             </p>
           </div>
 
@@ -105,7 +105,7 @@ rounded-lg bg-gray-100 group-hover:bg-[#2f4858] transition-all duration-300"
             </h3>
 
             <p className="mt-2 font-montserrat text-[14px] leading-[25.56px] tracking-[-0.18px] text-[#161C2D]">
-              Send your email to allanspangles@gmail.com
+              Send your email to webxspangles@gmail.com
             </p>
           </div>
 
